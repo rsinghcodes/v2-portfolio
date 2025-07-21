@@ -19,10 +19,10 @@ export default function SocialIcons() {
       size: 32,
     },
     {
-      src: "/icons/Twitter.png",
-      alt: "Twitter",
-      url: "https://twitter.com/johndoe",
-      size: 32,
+      src: "/icons/github.png",
+      alt: "GitHub",
+      url: "https://github.com/raghvendra-singh",
+      size: 28,
     },
     {
       src: "/icons/mail.png",

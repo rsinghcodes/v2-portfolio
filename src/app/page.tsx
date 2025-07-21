@@ -10,6 +10,8 @@ import {
   ExternalLink,
   Github,
   Globe,
+  Linkedin,
+  Mail,
   Server,
   Wrench,
 } from "lucide-react";
@@ -20,9 +22,71 @@ import SocialIcons from "../components/SocialIcons";
 
 export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [activeNav, setActiveNav] = useState("About");
+  // Typewriter alternating title state
+  const titles = ["Software Engineer", "Full Stack Developer"];
+  const [titleIndex, setTitleIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [typing, setTyping] = useState(true);
 
   useEffect(() => {
     setIsLoaded(true);
+  }, []);
+
+  // Typewriter effect for alternating titles
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (typing) {
+      if (displayedText.length < titles[titleIndex].length) {
+        timeout = setTimeout(() => {
+          setDisplayedText(
+            titles[titleIndex].slice(0, displayedText.length + 1)
+          );
+        }, 70);
+      } else {
+        // Pause after typing
+        timeout = setTimeout(() => setTyping(false), 1200);
+      }
+    } else {
+      // Erase effect
+      if (displayedText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayedText(
+            titles[titleIndex].slice(0, displayedText.length - 1)
+          );
+        }, 40);
+      } else {
+        // Switch to next title
+        setTitleIndex((prev) => (prev + 1) % titles.length);
+        setTyping(true);
+      }
+    }
+    return () => clearTimeout(timeout);
+  }, [displayedText, typing, titleIndex, titles]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionIds = ["about", "skills", "projects", "contact"];
+      const offsets = sectionIds.map((id) => {
+        const el = document.getElementById(id);
+        if (!el) return { id, top: Infinity };
+        const rect = el.getBoundingClientRect();
+        return { id, top: rect.top };
+      });
+      // Find the last section whose top is less than a threshold (e.g., 120px from top)
+      const threshold = 120;
+      const current = offsets
+        .filter(({ top }) => top - threshold < 0)
+        .sort((a, b) => b.top - a.top)[0];
+      if (current) {
+        const navName =
+          current.id.charAt(0).toUpperCase() + current.id.slice(1);
+        setActiveNav(navName);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const skills = [
@@ -85,61 +149,93 @@ export default function Home() {
     },
   ];
 
+  const socials = [
+    {
+      link: "https://linkedin.com/in/raghvendra-singh",
+      icon: <Linkedin className="w-5 h-5" />,
+    },
+    {
+      link: "https://github.com/raghvendra-singh",
+      icon: <Github className="w-5 h-5" />,
+    },
+    {
+      link: "mailto:raghvendra.singh@gmail.com",
+      icon: <Mail className="w-5 h-5" />,
+    },
+  ];
+
   if (!isLoaded) return null;
 
   return (
     <div className="font-sans min-h-screen bg-background text-foreground relative">
-      {/* Background Image */}
-      <div
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(/assets/bg.png)" }}
-      >
-        <div className="absolute inset-0 bg-background/20 backdrop-blur-sm"></div>
-      </div>
-
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.h1
-              className="text-xl font-bold gradient-text"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              John Doe
-            </motion.h1>
-            <div className="hidden md:flex space-x-8">
-              {["About", "Skills", "Projects", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-foreground/80 hover:text-foreground transition-colors nav-3d"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-            <MobileNav navItems={["About", "Skills", "Projects", "Contact"]} />
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95vw] md:max-w-2xl lg:max-w-3xl px-4 py-3 rounded-2xl shadow-lg bg-background/60 backdrop-blur-xl border border-border">
+        <div className="flex items-center justify-center">
+          <div className="hidden md:flex space-x-8">
+            {["About", "Skills", "Projects", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                onClick={() => setActiveNav(item)}
+                className={`hover:text-foreground transition-colors nav-3d ${
+                  activeNav === item
+                    ? "font-bold text-cyan-400 underline underline-offset-4"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {item}
+              </a>
+            ))}
           </div>
+          <MobileNav navItems={["About", "Skills", "Projects", "Contact"]} />
         </div>
       </nav>
 
+      {/* Email Fixed on the right side of the screen */}
+      <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden md:block">
+        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-gray-600">
+          <a
+            className="my-5 mx-auto p-2.5 font-mono text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-cyan-400"
+            style={{ writingMode: "vertical-rl" }}
+            href={`mailto:raghvendra.singh@gmail.com`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            raghvendra.singh@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div className="w-10 fixed bottom-0 left-10 right-auto z-10 hidden md:block">
+        <ul className="flex flex-col items-center m-0 p-0 list-none after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-slate-600">
+          {socials.map(({ link, icon }, i) => (
+            <li
+              className="mx-2.5 my-3 last-of-type:mb-3 hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-cyan-400"
+              key={i}
+            >
+              <a href={link} target="_blank" rel="noopener noreferrer">
+                {icon}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* Hero Section */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-3">
+            <h1 className="text-3xl md:text-5xl font-bold mb-3">
               Raghvendra Singh
             </h1>
-            <h1 className="block md:whitespace-nowrap border-r-2 border-orange-500 font-mono text-xl md:text-3xl pr-1 md:pr-2 mb-3 mx-auto overflow-hidden anim-typewriter">
-              Software Engineer
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <h2 className="block md:whitespace-nowrap font-medium text-lg md:text-2xl pr-1 md:pr-2 mb-3 mx-auto overflow-hidden anim-typewriter">
+              {displayedText}
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Building innovative solutions for startups with 3 years of
               experience in full-stack development
             </p>
@@ -147,9 +243,9 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold btn-3d flex items-center justify-center gap-2"
+                className="px-8 py-3 rounded-lg font-semibold btn-3d flex items-center justify-center gap-2"
               >
-                View Projects <ArrowRight className="w-4 h-4" />
+                View Work <ArrowRight className="w-4 h-4" />
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -164,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-20 px-6">
+      <section id="about" className="relative py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -174,7 +270,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
               Passionate software engineer with 3 years of experience building
               scalable applications for startups. I specialize in modern web
               technologies and love creating user-centric solutions.
@@ -242,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative z-10 py-20 px-6 bg-muted/50">
+      <section id="skills" className="relative py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -318,7 +414,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative z-10 py-20 px-6">
+      <section id="projects" className="relative py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -328,7 +424,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               Some of my recent work
             </p>
           </motion.div>
@@ -396,47 +492,49 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative z-10 py-20 px-6 bg-muted/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              I&apos;m always open to discussing new opportunities and
-              interesting projects.
-            </p>
+      <section
+        id="contact"
+        className="relative min-h-screen flex items-center justify-center py-20 px-6"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            I&apos;m always open to discussing new opportunities and interesting
+            projects.
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-              <motion.a
-                href="mailto:john.doe@example.com"
-                className="flex items-center justify-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold btn-3d"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Icon3D
-                  src="/icons/mail.png"
-                  alt="Email"
-                  size={20}
-                  hoverEffect={false}
-                />
-                john.doe@example.com
-              </motion.a>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+            <motion.a
+              href="mailto:john.doe@example.com"
+              className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold btn-3d"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Icon3D
+                src="/icons/mail.png"
+                alt="Email"
+                size={20}
+                hoverEffect={false}
+              />
+              john.doe@example.com
+            </motion.a>
+          </div>
 
-            <SocialIcons />
-          </motion.div>
-        </div>
+          <SocialIcons />
+        </motion.div>
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 py-8 px-6 border-t border-border">
+      <footer className="relative py-8 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground">
-            © 2024 John Doe. Built with Next.js and ❤️
+            © 2025 Raghvendra Singh. Built with Next.js
           </p>
         </div>
       </footer>
