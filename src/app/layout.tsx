@@ -1,43 +1,43 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "John Doe - Software Engineer",
+  title: 'Raghvendra Singh - Software Engineer',
   description:
-    "Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.",
+    'Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.',
   keywords: [
-    "Software Engineer",
-    "Full Stack Developer",
-    "React",
-    "Node.js",
-    "Startup",
-    "Web Development",
+    'Software Engineer',
+    'Full Stack Developer',
+    'React',
+    'Node.js',
+    'Startup',
+    'Web Development',
   ],
-  authors: [{ name: "John Doe" }],
-  creator: "John Doe",
+  authors: [{ name: 'Raghvendra Singh' }],
+  creator: 'Raghvendra Singh',
   openGraph: {
-    title: "John Doe - Software Engineer",
+    title: 'Raghvendra Singh - Software Engineer',
     description:
-      "Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.",
-    type: "website",
-    locale: "en_US",
+      'Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.',
+    type: 'website',
+    locale: 'en_US',
   },
   twitter: {
-    card: "summary_large_image",
-    title: "John Doe - Software Engineer",
+    card: 'summary_large_image',
+    title: 'Raghvendra Singh - Software Engineer',
     description:
-      "Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.",
+      'Software Engineer with 3 years of experience in startups. Specializing in full-stack development, React, Node.js, and modern web technologies.',
   },
   robots: {
     index: true,
