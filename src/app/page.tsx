@@ -2,19 +2,19 @@
 
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Cloud,
   Code,
   Database,
-  Download,
   ExternalLink,
   Github,
   Globe,
   Linkedin,
   Mail,
+  Mouse,
   Server,
   Wrench,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Icon3D from "../components/3DIcon";
 import MobileNav from "../components/MobileNav";
@@ -167,12 +167,12 @@ export default function Home() {
   if (!isLoaded) return null;
 
   return (
-    <div className="font-sans min-h-screen bg-background text-foreground relative">
+    <div className="font-sans min-h-screen bg-background text-foreground relative max-w-2xl mx-auto space-y-10 py-12 sm:py-24 px-6">
       {/* Navigation */}
-      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[95vw] md:max-w-2xl lg:max-w-3xl px-4 py-3 rounded-2xl shadow-lg bg-background/60 backdrop-blur-xl border border-border">
+      <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-[50vw] md:max-w-sm px-2.5 py-3 rounded-3xl shadow-lg bg-background/60 backdrop-blur-xl border border-border">
         <div className="flex items-center justify-center">
-          <div className="hidden md:flex space-x-8">
-            {["About", "Skills", "Projects", "Contact"].map((item) => (
+          <div className="hidden md:flex space-x-6">
+            {["Experience", "Skills", "Projects", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -187,15 +187,15 @@ export default function Home() {
               </a>
             ))}
           </div>
-          <MobileNav navItems={["About", "Skills", "Projects", "Contact"]} />
+          <MobileNav navItems={["Work", "Skills", "Projects", "Contact"]} />
         </div>
       </nav>
 
       {/* Email Fixed on the right side of the screen */}
-      <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden md:block">
-        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-gray-600">
+      <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
+        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-white">
           <a
-            className="my-5 mx-auto p-2.5 font-mono text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-cyan-400"
+            className="my-5 mx-auto p-2.5 font-mono text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
             style={{ writingMode: "vertical-rl" }}
             href={`mailto:raghvendra.singh@gmail.com`}
             target="_blank"
@@ -206,11 +206,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-10 fixed bottom-0 left-10 right-auto z-10 hidden md:block">
-        <ul className="flex flex-col items-center m-0 p-0 list-none after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-slate-600">
+      <div className="w-10 fixed bottom-0 left-10 right-auto z-10 hidden lg:block">
+        <ul className="flex flex-col items-center m-0 p-0 list-none after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-white">
           {socials.map(({ link, icon }, i) => (
             <li
-              className="mx-2.5 my-3 last-of-type:mb-3 hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-cyan-400"
+              className="mx-2.5 my-3 last-of-type:mb-3 hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
               key={i}
             >
               <a href={link} target="_blank" rel="noopener noreferrer">
@@ -222,293 +222,323 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-3xl md:text-5xl font-bold mb-3">
-              Raghvendra Singh
-            </h1>
-            <h2 className="block md:whitespace-nowrap font-medium text-lg md:text-2xl pr-1 md:pr-2 mb-3 mx-auto overflow-hidden anim-typewriter">
-              {displayedText}
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Building innovative solutions for startups with 3 years of
-              experience in full-stack development
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 rounded-lg font-semibold btn-3d flex items-center justify-center gap-2"
-              >
-                View Work <ArrowRight className="w-4 h-4" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-border rounded-lg font-semibold btn-3d flex items-center justify-center gap-2"
-              >
-                Download Resume <Download className="w-4 h-4" />
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
+      <section className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="gap-y-4 flex flex-col items-start justify-center"
+        >
+          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+            Hi, I'm Raghvendra 👋
+          </h1>
+          <h2 className="block md:whitespace-nowrap font-medium tracking-tight text-lg md:text-2xl overflow-hidden anim-typewriter">
+            {displayedText}
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Building innovative solutions for startups with 3 years of
+            experience in full-stack development
+          </p>
+        </motion.div>
+        {/* Scroll Down Icon */}
+        <motion.a
+          href="#about"
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: 1, y: [0, 20, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, repeatType: "loop" }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-8 flex flex-col items-center cursor-pointer group"
+          aria-label="Scroll down to About section"
+        >
+          <Mouse className="w-8 h-8 text-cyan-400 group-hover:text-primary transition-colors" />
+
+          <span className="mt-2 text-xs text-muted-foreground">
+            Scroll Down
+          </span>
+        </motion.a>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="relative py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">About Me</h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Passionate software engineer with 3 years of experience building
-              scalable applications for startups. I specialize in modern web
-              technologies and love creating user-centric solutions.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Full-Stack Development",
-                description:
-                  "Building complete web applications from frontend to backend with modern technologies.",
-                icon: (
-                  <Icon3D src="/icons/Code.png" alt="Code" className="float" />
-                ),
-              },
-              {
-                title: "Startup Experience",
-                description:
-                  "3 years of experience working in fast-paced startup environments, delivering MVPs and scaling applications.",
-                icon: (
-                  <Icon3D
-                    src="/icons/rocket.png"
-                    alt="Code"
-                    className="float"
-                  />
-                ),
-              },
-              {
-                title: "Problem Solving",
-                description:
-                  "Strong analytical skills to identify and solve complex technical challenges efficiently.",
-                icon: (
-                  <Icon3D
-                    src="/icons/problem_solving.png"
-                    alt="Code"
-                    className="float"
-                  />
-                ),
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="p-6 bg-card rounded-lg border border-border card-3d group"
-              >
-                <motion.div
-                  key={index}
-                  className="flex justify-center mb-8"
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.3 }}
-                >
-                  {item.icon}
-                </motion.div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.description}</p>
-              </motion.div>
-            ))}
+      {/* Experience Section */}
+      <section id="experience" className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16 space-y-2"
+        >
+          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            My Work
           </div>
-        </div>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            Experience
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Here&apos;s a summary of my professional journey and background in
+            software development.
+          </p>
+        </motion.div>
+        <motion.ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+          <li className="relative ml-10 py-4">
+            <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
+              <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
+                <Image
+                  src="/assets/atc-logo.webp"
+                  width={48}
+                  height={48}
+                  alt="American Technology Consulting Logo"
+                  className="aspect-square object-contain"
+                />
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col justify-start gap-1">
+              <time className="text-xs text-muted-foreground">
+                Jan 2023 - Aug 2024
+              </time>
+              <h2 className="font-semibold leading-none">
+                American Technology Consulting
+              </h2>
+              <span className="prose dark:prose-invert text-sm text-muted-foreground">
+                Developed a mobile game that uses Gemini AI to create
+                interactive mystery stories where players solve puzzles through
+                voice or text interactions.
+              </span>
+            </div>
+            <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+              <div
+                className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
+                title="Software Engineer 1"
+              >
+                Software Engineer 1
+              </div>
+            </div>
+          </li>
+          <li className="relative ml-10 py-4">
+            <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
+              <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
+                <Image
+                  src="/assets/atc-logo.webp"
+                  width={48}
+                  height={48}
+                  alt="American Technology Consulting Logo"
+                  className="aspect-square object-contain"
+                />
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col justify-start gap-1">
+              <time className="text-xs text-muted-foreground">
+                Jun 2022 - Dec 2022
+              </time>
+              <h2 className="font-semibold leading-none">
+                American Technology Consulting
+              </h2>
+              <span className="prose dark:prose-invert text-sm text-muted-foreground">
+                Developed a mobile game that uses Gemini AI to create
+                interactive mystery stories where players solve puzzles through
+                voice or text interactions.
+              </span>
+            </div>
+            <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+              <div
+                className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
+                title="Associate Software Engineer"
+              >
+                Associate Software Engineer
+              </div>
+            </div>
+          </li>
+          <li className="relative ml-10 py-4">
+            <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
+              <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
+                <Image
+                  src="/assets/atc-logo.webp"
+                  width={48}
+                  height={48}
+                  alt="American Technology Consulting Logo"
+                  className="aspect-square object-contain"
+                />
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col justify-start gap-1">
+              <time className="text-xs text-muted-foreground">
+                Mar 2022 - May 2022
+              </time>
+              <h2 className="font-semibold leading-none">
+                American Technology Consulting
+              </h2>
+              <span className="prose dark:prose-invert text-sm text-muted-foreground">
+                Developed a mobile game that uses Gemini AI to create
+                interactive mystery stories where players solve puzzles through
+                voice or text interactions.
+              </span>
+            </div>
+            <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+              <div
+                className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
+                title="Software Engineer Intern"
+              >
+                Software Engineer Intern
+              </div>
+            </div>
+          </li>
+          <li className="relative ml-10 py-4">
+            <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
+              <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
+                <Image
+                  className="aspect-square h-full w-full object-contain"
+                  alt="Magazine3 Technologies"
+                  src="/assets/magazine3.png"
+                  width={48}
+                  height={48}
+                />
+              </span>
+            </div>
+            <div className="flex flex-1 flex-col justify-start gap-1">
+              <time className="text-xs text-muted-foreground">
+                May 2021 - Oct 2021
+              </time>
+              <h2 className="font-semibold leading-none">
+                Magazine3 Technologies
+              </h2>
+              <span className="prose dark:prose-invert text-sm text-muted-foreground">
+                Developed an AI-powered application that automatically extracts
+                and organizes data from uploaded files (images, videos, audio)
+                into structured table records.
+              </span>
+            </div>
+            <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+              <div
+                className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
+                title="Junior Developer"
+              >
+                Junior Developer
+              </div>
+            </div>
+          </li>
+        </motion.ul>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="relative py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center gap-2">
-              <h2 className="text-4xl font-bold mb-4">Technical Skills </h2>
-              <Icon3D
-                src="/icons/flash.png"
-                alt="Skills"
-                size={40}
-                className="mb-4"
-              />
-            </div>
-            <p className="text-xl text-muted-foreground">
-              Technologies and tools I work with
-            </p>
-          </motion.div>
-
-          {["Frontend", "Backend", "Database", "DevOps", "Tools"].map(
-            (category, categoryIndex) => (
-              <motion.div
-                key={category}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: categoryIndex * 0.2 }}
-                viewport={{ once: true }}
-                className="mb-12"
-              >
-                <h3 className="text-2xl font-bold mb-6 text-center">
-                  {category}
-                </h3>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {skills
-                    .filter((skill) => skill.category === category)
-                    .map((skill, index) => (
-                      <motion.div
-                        key={skill.name}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="p-6 bg-card rounded-lg border border-border card-3d group"
-                      >
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="icon-3d">
-                            <skill.icon className="w-8 h-8 text-primary" />
-                          </div>
-                          <span className="text-sm text-muted-foreground">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <h3 className="font-semibold mb-2">{skill.name}</h3>
-                        <div className="w-full bg-muted rounded-full h-2">
-                          <motion.div
-                            className="bg-primary h-2 rounded-full skill-progress"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: 0.5 }}
-                            viewport={{ once: true }}
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
-                </div>
-              </motion.div>
-            )
-          )}
-        </div>
+      <section id="skills" className="relative ">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center space-y-2"
+        >
+          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            Skills
+          </div>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            Technical Skills
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Technologies and tools I work with
+          </p>
+        </motion.div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-4">Featured Projects</h2>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Some of my recent work
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="bg-card rounded-lg border border-border overflow-hidden card-3d group"
-              >
-                <div className="h-48 bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <Icon3D
-                    src="/icons/Cone.png"
-                    alt="Project Icon"
-                    size={80}
-                    className="opacity-60"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-primary/10 text-primary text-sm rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-2">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-primary hover:underline"
-                    >
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-primary hover:underline"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      <section id="projects" className="relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center space-y-2"
+        >
+          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            My Projects
           </div>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            Featured Projects
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            Some of my recent work
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className="bg-card rounded-lg border border-border overflow-hidden card-3d group"
+            >
+              <div className="h-48 bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <Icon3D
+                  src="/icons/Cone.png"
+                  alt="Project Icon"
+                  size={80}
+                  className="opacity-60"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-muted-foreground mb-4">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 bg-primary/10 text-primary text-sm rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </a>
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-primary hover:underline"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
       {/* Contact Section */}
       <section
         id="contact"
-        className="relative min-h-screen flex items-center justify-center py-20 px-6"
+        className="relative min-h-screen flex items-center justify-center"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center space-y-2"
         >
-          <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8">
+          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+            Contact
+          </div>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            Get In Touch
+          </h2>
+          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             I&apos;m always open to discussing new opportunities and interesting
             projects.
           </p>
-
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
             <motion.a
               href="mailto:john.doe@example.com"
@@ -525,13 +555,12 @@ export default function Home() {
               john.doe@example.com
             </motion.a>
           </div>
-
           <SocialIcons />
         </motion.div>
       </section>
 
       {/* Footer */}
-      <footer className="relative py-8 px-6">
+      <footer className="relative py-8">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground">
             © 2025 Raghvendra Singh. Built with Next.js
