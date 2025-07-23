@@ -166,7 +166,7 @@ export default function Home() {
       <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
         <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-slate-200/50">
           <a
-            className="my-5 mx-auto p-2.5 font-mono text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
+            className="my-5 mx-auto p-2.5 text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
             style={{ writingMode: 'vertical-rl' }}
             href={`mailto:raghvendrrsingh@gmail.com`}
             target="_blank"
@@ -204,8 +204,11 @@ export default function Home() {
           <h2 className="text-xl font-bold">About</h2>
           <div className="prose max-w-full font-sans text-muted-foreground dark:prose-invert">
             <p>
-              I&apos;m passionate about building innovative solutions and that
-              makes impact on people&apos;s lives.
+              I&apos;m passionate about building innovative solutions that
+              positively impact people&apos;s lives. I have over 3 years of
+              experience in software development, having worked for a startup to
+              build B2B SaaS products. I am always eager to learn new things and
+              to push the boundaries of what is possible.
             </p>
           </div>
         </motion.div>
