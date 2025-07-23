@@ -96,7 +96,7 @@ export default function Home() {
       description:
         'ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.',
       tech: ['React', 'Node.js', 'MongoDB', 'GraphQL', 'Apollo Server'],
-      image: '/project1.jpg',
+      image: '/assets/projects/readlist.png',
       link: 'https://github.com/rsinghcodes/readlist',
       live: 'https://readlistapp.netlify.app/',
     },
@@ -105,7 +105,7 @@ export default function Home() {
       description:
         'A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.',
       tech: ['React Native', 'Supabase', 'Expo'],
-      image: '/project2.jpg',
+      image: '/assets/projects/votify.png',
       link: 'https://github.com/rsinghcodes/votify',
       live: 'https://github.com/rsinghcodes/votify',
     },
@@ -114,7 +114,7 @@ export default function Home() {
       description:
         'InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.',
       tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-      image: '/project3.jpg',
+      image: '/assets/projects/intercup.png',
       link: 'https://github.com/rsinghcodes/intercup',
       live: 'https://intercup.netlify.app/',
     },
@@ -164,7 +164,7 @@ export default function Home() {
 
       {/* Email Fixed on the right side of the screen */}
       <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
-        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-white">
+        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-slate-200/50">
           <a
             className="my-5 mx-auto p-2.5 font-mono text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
             style={{ writingMode: 'vertical-rl' }}
@@ -359,17 +359,18 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col md:flex-row bg-card rounded-lg overflow-hidden card-3d group shadow-md transition-all duration-300 hover:bg-slate-800/50 hover:backdrop-blur-sm hover:shadow-lg"
+              className="flex flex-col md:flex-row bg-card rounded-lg overflow-hidden group shadow-md transition-all duration-300 hover:bg-slate-800/50 hover:backdrop-blur-sm hover:shadow-lg p-2"
             >
-              <div className="h-48 md:h-auto md:w-48 bg-muted flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <Icon3D
-                  src="/icons/Cone.png"
-                  alt="Project Icon"
-                  size={80}
-                  className="opacity-60"
+              <div className="relative w-full h-48 md:w-48 md:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
-              <div className="flex-1 flex flex-col justify-center space-y-2 p-2">
+              <div className="flex-1 flex flex-col justify-center space-y-2 pl-2">
                 <h3 className="font-semibold tracking-tight mt-1 text-base">
                   {project.title}
                 </h3>
