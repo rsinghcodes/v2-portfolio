@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Icon3D from "./3DIcon";
+import { motion } from 'framer-motion';
+import Icon3D from './3DIcon';
 
 interface SocialIconProps {
   src: string;
@@ -13,21 +13,21 @@ interface SocialIconProps {
 export default function SocialIcons() {
   const socialLinks = [
     {
-      src: "/icons/LinkedIn.png",
-      alt: "LinkedIn",
-      url: "https://linkedin.com/in/johndoe",
+      src: '/icons/LinkedIn.png',
+      alt: 'LinkedIn',
+      url: 'https://linkedin.com/in/raghvendrrsingh',
       size: 32,
     },
     {
-      src: "/icons/github.png",
-      alt: "GitHub",
-      url: "https://github.com/raghvendra-singh",
+      src: '/icons/github.png',
+      alt: 'GitHub',
+      url: 'https://github.com/rsinghcodes',
       size: 28,
     },
     {
-      src: "/icons/mail.png",
-      alt: "Email",
-      url: "mailto:john.doe@example.com",
+      src: '/icons/mail.png',
+      alt: 'Email',
+      url: 'mailto:raghvendrrsingh@gmail.com',
       size: 32,
     },
   ];

@@ -92,31 +92,66 @@ export default function Home() {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'ReadList - A blog web app',
       description:
-        'Full-stack e-commerce solution with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.',
-      tech: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+        'ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.',
+      tech: ['React', 'Node.js', 'MongoDB', 'GraphQL', 'Apollo Server'],
       image: '/project1.jpg',
-      link: 'https://github.com/johndoe/ecommerce',
-      live: 'https://ecommerce-demo.com',
+      link: 'https://github.com/rsinghcodes/readlist',
+      live: 'https://readlistapp.netlify.app/',
     },
     {
-      title: 'Task Management App',
+      title: 'Votify - A mobile voting app',
       description:
-        'Real-time collaborative task management application with drag-and-drop functionality and team collaboration features.',
-      tech: ['React', 'Socket.io', 'MongoDB', 'Express'],
+        'A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.',
+      tech: ['React Native', 'Supabase', 'Expo'],
       image: '/project2.jpg',
-      link: 'https://github.com/johndoe/taskapp',
-      live: 'https://taskapp-demo.com',
+      link: 'https://github.com/rsinghcodes/votify',
+      live: 'https://github.com/rsinghcodes/votify',
     },
     {
-      title: 'AI Chat Assistant',
+      title: 'InterCup - An interview preparation app',
       description:
-        'Intelligent chatbot powered by OpenAI API with natural language processing and conversation memory.',
-      tech: ['Python', 'OpenAI API', 'FastAPI', 'React'],
+        'InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.',
+      tech: ['React', 'Node.js', 'MongoDB', 'Express'],
       image: '/project3.jpg',
-      link: 'https://github.com/johndoe/aichat',
-      live: 'https://aichat-demo.com',
+      link: 'https://github.com/rsinghcodes/intercup',
+      live: 'https://intercup.netlify.app/',
+    },
+  ];
+
+  const certifications = [
+    {
+      href: 'https://www.hackerrank.com/certificates/0377f0ca48fa',
+      logo: '/assets/hackerrank-logo.png',
+      alt: 'HackerRank',
+      title: 'Software Engineer Intern',
+      date: 'Aug 2024',
+      org: 'HackerRank',
+    },
+    {
+      href: 'https://www.hackerrank.com/certificates/f32c792e4bf9',
+      logo: '/assets/hackerrank-logo.png',
+      alt: 'HackerRank',
+      title: 'Frontend Developer (React)',
+      date: 'Aug 2024',
+      org: 'HackerRank',
+    },
+    {
+      href: 'http://ude.my/UC-6c946f39-3f52-43bd-bbf9-69662ab408fa',
+      logo: '/assets/udemy-logo.png',
+      alt: 'Udemy',
+      title: 'Linux Administration Bootcamp: Go from Beginner to Advanced',
+      date: 'Mar 2023',
+      org: 'Udemy',
+    },
+    {
+      href: 'https://coursera.org/share/173f0186a12f6bb1a00536de9540c357',
+      logo: '/assets/coursera-logo.png',
+      alt: 'Coursera',
+      title: 'Responsive Website Basics: Code with HTML, CSS, and JavaScript',
+      date: 'May 2020',
+      org: 'Coursera',
     },
   ];
 
@@ -143,7 +178,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative">
+      <section id="hero" className="relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,6 +193,7 @@ export default function Home() {
           </h2>
         </motion.div>
       </section>
+
       <section id="about">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -166,21 +202,17 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 className="text-xl font-bold">About</h2>
-          <div className="prose max-w-full text-balance font-sans text-muted-foreground dark:prose-invert">
+          <div className="prose max-w-full font-sans text-muted-foreground dark:prose-invert">
             <p>
-              I&apos;m passionate about building innovative AI solutions and
-              finding security vulnerabilities. I&apos;ve discovered 8 security
-              vulnerabilities in Google Chrome, earned over $23,000 in rewards
-              and ranked in Google&apos;s top-100 security researchers. I&apos;m
-              currently focused on developing JsonGPT, an AI-powered API that
-              provides structured JSON outputs, and have also participated in
-              Google AI hackathons.
+              I&apos;m passionate about building innovative solutions and that
+              makes impact on people&apos;s lives.
             </p>
           </div>
         </motion.div>
       </section>
+
       {/* Experience Section */}
-      <section id="experience" className="relative space-y-12">
+      <section id="experience" className="relative space-y-12 pt-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -246,8 +278,61 @@ export default function Home() {
         </motion.ul>
       </section>
 
+      <section
+        id="certifications"
+        className="relative flex flex-col min-h-0 gap-y-3"
+      >
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-xl font-bold"
+        >
+          Certifications
+        </motion.h2>
+        {certifications.map((cert, idx) => (
+          <motion.a
+            key={cert.href}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="block cursor-pointer"
+            href={cert.href}
+          >
+            <div className="rounded-lg text-foreground flex">
+              <div className="flex-none">
+                <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto bg-muted-background">
+                  <Image
+                    width={48}
+                    height={48}
+                    src={cert.logo}
+                    alt={cert.alt}
+                    className="aspect-square h-full w-full object-contain"
+                  />
+                </span>
+              </div>
+              <div className="flex-grow ml-4 items-center flex-col group">
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
+                      {cert.title}
+                    </h3>
+                    <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                      {cert.date}
+                    </div>
+                  </div>
+                  <div className="font-sans text-xs">{cert.org}</div>
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        ))}
+      </section>
+
       {/* Projects Section */}
-      <section id="projects" className="relative space-y-12">
+      <section id="projects" className="relative space-y-12 py-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
