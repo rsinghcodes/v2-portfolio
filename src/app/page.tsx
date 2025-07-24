@@ -53,40 +53,49 @@ export default function Home() {
 
   const experience = [
     {
+      logo: '/assets/college.png',
+      alt: 'American Technology Consulting Logo',
+      time: 'Aug 2024 - Present',
+      title: 'Pursuing Master of Computer Applications',
+      time_count: '2 years',
+      desc: 'Coursework: Software Engineering, AI & ML, Data Structure Design and Analysis of Algorithms, Database Management System, Computer Networks',
+      company: 'Dr. APJ Abdul Kalam Technical University, Lucknow',
+    },
+    {
       logo: '/assets/atc-logo.webp',
       alt: 'American Technology Consulting Logo',
       time: 'Jan 2023 - Aug 2024',
-      title: 'Software Engineer',
-      desc: 'Developed a mobile game that uses Gemini AI to create interactive mystery stories where players solve puzzles through voice or text interactions.',
+      title: 'Software Engineer 1',
+      time_count: '1 year 8 months',
+      desc: 'Worked as a Full Stack Engineer, building APIs and documentation for Auzmor (an Employee Experience platform) and co-developing the Reveal application — a survey-based management tool—from scratch, covering both frontend and backend.',
       company: 'American Technology Consulting',
-      companyTitle: 'American Technology Consulting',
     },
     {
       logo: '/assets/atc-logo.webp',
       alt: 'American Technology Consulting Logo',
       time: 'Jun 2022 - Dec 2022',
+      time_count: '7 months',
       title: 'Associate Software Engineer',
-      desc: 'Developed a mobile game that uses Gemini AI to create interactive mystery stories where players solve puzzles through voice or text interactions.',
+      desc: 'Contributed to the Freshflows team (B2B SaaS product) by developing user interfaces/components and integrating backend APIs to deliver seamless functionality.',
       company: 'American Technology Consulting',
-      companyTitle: 'American Technology Consulting',
     },
     {
       logo: '/assets/atc-logo.webp',
       alt: 'American Technology Consulting Logo',
       time: 'Mar 2022 - May 2022',
+      time_count: '3 months',
       title: 'Software Engineer Intern',
-      desc: 'Developed a mobile game that uses Gemini AI to create interactive mystery stories where players solve puzzles through voice or text interactions.',
+      desc: 'Developed an Employee Time Tracking web application using React, Express.js, Node.js, and MongoDB, enabling employees to log work hours and provide detailed descriptions of tasks performed. ',
       company: 'American Technology Consulting',
-      companyTitle: 'American Technology Consulting',
     },
     {
       logo: '/assets/magazine3.png',
       alt: 'Magazine3 Technologies',
       time: 'May 2021 - Oct 2021',
+      time_count: '6 months',
       title: 'Magazine3 Technologies',
-      desc: 'Developed an AI-powered application that automatically extracts and organizes data from uploaded files (images, videos, audio) into structured table records.',
+      desc: 'Enhanced website performance and user experience by optimizing Core Web Vitals (LCP, CLS, TTFB) through image optimization, caching strategies, and code minification, achieving high PageSpeed and Lighthouse scores.',
       company: 'Junior Developer',
-      companyTitle: 'Junior Developer',
     },
   ];
 
@@ -164,7 +173,7 @@ export default function Home() {
 
       {/* Email Fixed on the right side of the screen */}
       <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
-        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-slate-200/50">
+        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-foreground">
           <a
             className="my-5 mx-auto p-2.5 text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
             style={{ writingMode: 'vertical-rl' }}
@@ -188,7 +197,7 @@ export default function Home() {
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
             Hi, I&apos;m Raghvendra 👋
           </h1>
-          <h2 className="block md:whitespace-nowrap font-medium tracking-tight text-xl overflow-hidden anim-typewriter">
+          <h2 className="block md:whitespace-nowrap tracking-tight md:text-xl overflow-hidden anim-typewriter">
             {displayedText}
           </h2>
         </motion.div>
@@ -205,10 +214,11 @@ export default function Home() {
           <div className="prose max-w-full font-sans text-muted-foreground dark:prose-invert">
             <p>
               I&apos;m passionate about building innovative solutions that
-              positively impact people&apos;s lives. I have over 3 years of
-              experience in software development, having worked for a startup to
-              build B2B SaaS products. I am always eager to learn new things and
-              to push the boundaries of what is possible.
+              positively impact people&apos;s lives. I have over{' '}
+              <strong>3 years of experience</strong> in software development,
+              having worked for a startup to{' '}
+              <strong>build B2B SaaS products</strong>. I am always eager to
+              learn new things and to push the boundaries of what is possible.
             </p>
           </div>
         </motion.div>
@@ -230,8 +240,8 @@ export default function Home() {
             Experience
           </h2>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Here&apos;s a summary of my professional journey and background in
-            software development.
+            Here&apos;s a summary of my professional journey and educational
+            background in software development.
           </p>
         </motion.div>
         <motion.ul className="mb-4 ml-4 divide-y divide-dashed border-l">
@@ -261,7 +271,7 @@ export default function Home() {
               </div>
               <div className="flex flex-1 flex-col justify-start gap-1">
                 <time className="text-xs text-muted-foreground">
-                  {exp.time}
+                  {exp.time} • {exp.time_count}
                 </time>
                 <h2 className="font-semibold leading-none">{exp.title}</h2>
                 <span className="prose dark:prose-invert text-sm text-muted-foreground">
@@ -271,7 +281,7 @@ export default function Home() {
               <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
                 <div
                   className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
-                  title={exp.companyTitle}
+                  title={exp.company}
                 >
                   {exp.company}
                 </div>
@@ -301,7 +311,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="block cursor-pointer"
+            className="block cursor-pointer group"
             href={cert.href}
           >
             <div className="rounded-lg text-foreground flex">
@@ -319,7 +329,7 @@ export default function Home() {
               <div className="flex-grow ml-4 items-center flex-col group">
                 <div className="flex flex-col">
                   <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm">
+                    <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm group-hover:underline">
                       {cert.title}
                     </h3>
                     <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
@@ -362,7 +372,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="flex flex-col md:flex-row bg-card rounded-lg overflow-hidden group shadow-md transition-all duration-300 hover:bg-slate-800/50 hover:backdrop-blur-sm hover:shadow-lg p-2"
+              className="flex flex-col md:flex-row bg-card rounded-lg overflow-hidden group shadow-md transition-all duration-300 hover:bg-slate-800/50 hover:backdrop-blur-sm hover:shadow-lg p-2 md:p-3"
             >
               <div className="relative w-full h-48 md:w-48 md:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden">
                 <Image
@@ -374,7 +384,7 @@ export default function Home() {
                 />
               </div>
               <div className="flex-1 flex flex-col justify-center space-y-2 pl-2">
-                <h3 className="font-semibold tracking-tight mt-1 text-base">
+                <h3 className="font-semibold tracking-tight mt-2 md:mt-0 text-base">
                   {project.title}
                 </h3>
                 <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight">
