@@ -197,8 +197,16 @@ export default function Home() {
           <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
             Hi, I&apos;m Raghvendra 👋
           </h1>
-          <h2 className="block md:whitespace-nowrap tracking-tight md:text-xl overflow-hidden anim-typewriter">
+          <h2
+            className="block md:whitespace-nowrap tracking-tight md:text-xl overflow-hidden"
+            style={{
+              minHeight: '1.5em', // Reserve space for one line
+              whiteSpace: 'pre', // Preserve spaces
+              letterSpacing: '0.02em',
+            }}
+          >
             {displayedText}
+            <span className="blinking-cursor">|</span>
           </h2>
         </motion.div>
       </section>
@@ -211,7 +219,7 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 className="text-xl font-bold">About</h2>
-          <div className="prose max-w-full font-sans text-muted-foreground dark:prose-invert">
+          <div className="prose max-w-full font-sans text-muted-foreground prose-invert">
             <p>
               I&apos;m passionate about building innovative solutions that
               positively impact people&apos;s lives. I have over{' '}

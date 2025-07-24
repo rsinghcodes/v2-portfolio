@@ -186,15 +186,19 @@ html {
   transform: translateY(-1px) scale(0.98);
 }
 
-.anim-typewriter {
-  animation: typewriter 4s steps(44) 1s 1 normal both;
+.blinking-cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 1s steps(1) infinite;
 }
 
-@keyframes typewriter {
-  from {
-    width: 0;
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
   }
-  to {
-    width: 10em;
+  51%,
+  100% {
+    opacity: 0;
   }
 }
