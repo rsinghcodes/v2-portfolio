@@ -9,6 +9,11 @@
   --border: #e2e8f0;
   --ring: #3b82f6;
   --radius: 0.5rem;
+  --accent: #7f5af0; /* Vibrant accent color */
+  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
+  --glass-bg: rgba(10, 25, 47, 0.55);
+  --glass-blur: blur(16px);
+  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
 @theme inline {
@@ -19,6 +24,7 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --font-sans: var(--font-plus-jakarta-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 * {
@@ -53,6 +59,43 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+/* Accent button */
+.btn-accent {
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(127, 90, 240, 0.15);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.btn-accent:hover {
+  box-shadow: 0 8px 32px rgba(127, 90, 240, 0.25);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Card shadow utility */
+.card-shadow {
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.06),
+    0 1.5px 4px 0 rgba(127, 90, 240, 0.04);
+}
+
+.section-border {
+  border: 1px solid rgba(127, 90, 240, 0.1);
+  /* Subtle accent border */
+}
+
+.rounded-elegant {
+  border-radius: 1.25rem;
 }
 
 /* Enhanced 3D hover effects */

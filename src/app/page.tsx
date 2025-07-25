@@ -164,10 +164,46 @@ export default function Home() {
     },
   ];
 
+  // Animation variants for staggered project cards
+  const projectListVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.18,
+      },
+    },
+  };
+  const projectCardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
+  // Animation variants for staggered section content
+  const staggerSection = {
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.18 },
+    },
+  };
+  const fadeSlide = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+  };
+  // Timeline dot animation
+  const dotVariants = {
+    hidden: { scale: 0.7, opacity: 0 },
+    show: {
+      scale: 1.1,
+      opacity: 1,
+      transition: { type: 'spring' as const, stiffness: 400, damping: 15 },
+    },
+    hover: { scale: 1.2, boxShadow: '0 0 0 4px rgba(127,90,240,0.15)' },
+  };
+
   if (!isLoaded) return null;
 
   return (
-    <main className="font-sans min-h-screen bg-background text-foreground relative max-w-2xl mx-auto md:mt-10 space-y-10 py-12 sm:py-24 px-6">
+    <main className="font-sans min-h-screen bg-background text-foreground relative max-w-2xl mx-auto md:mt-10 space-y-16 py-10 sm:py-16 px-2 sm:px-6">
       {/* Navigation */}
       <NavItems />
 
@@ -175,7 +211,7 @@ export default function Home() {
       <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
         <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-foreground">
           <a
-            className="my-5 mx-auto p-2.5 text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-foreground"
+            className="my-5 mx-auto p-2.5 text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-accent-gradient text-accent-gradient"
             style={{ writingMode: 'vertical-rl' }}
             href={`mailto:raghvendrrsingh@gmail.com`}
             target="_blank"
@@ -187,38 +223,58 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section id="hero" className="relative">
+      <section
+        id="hero"
+        className="relative glass section-border rounded-elegant p-5 sm:p-8"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="gap-y-4 flex flex-col items-start justify-center"
+          whileHover={{ y: -8, rotate: 1 }}
+          style={{ willChange: 'transform' }}
         >
-          <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+          <motion.h1
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl xl:text-7xl/none mb-2"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+          >
             Hi, I&apos;m Raghvendra 👋
-          </h1>
-          <h2
-            className="block md:whitespace-nowrap tracking-tight md:text-xl overflow-hidden"
+          </motion.h1>
+          <motion.h2
+            className="block md:whitespace-nowrap tracking-tight md:text-2xl font-semibold overflow-hidden mb-2"
             style={{
-              minHeight: '1.5em', // Reserve space for one line
-              whiteSpace: 'pre', // Preserve spaces
+              minHeight: '1.5em',
+              whiteSpace: 'pre',
               letterSpacing: '0.02em',
             }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.7 }}
           >
             {displayedText}
             <span className="blinking-cursor">|</span>
-          </h2>
+          </motion.h2>
         </motion.div>
       </section>
 
-      <section id="about">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-xl font-bold">About</h2>
+      <motion.section
+        id="about"
+        className="glass section-border rounded-elegant p-5 sm:p-8"
+        variants={staggerSection}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <motion.div variants={fadeSlide}>
+          <motion.h2
+            variants={fadeSlide}
+            className="text-2xl font-extrabold mb-4"
+          >
+            About
+          </motion.h2>
           <div className="prose max-w-full font-sans text-muted-foreground prose-invert">
             <p>
               I&apos;m passionate about building innovative solutions that
@@ -230,10 +286,13 @@ export default function Home() {
             </p>
           </div>
         </motion.div>
-      </section>
+      </motion.section>
 
       {/* Experience Section */}
-      <section id="experience" className="relative space-y-12 pt-8">
+      <section
+        id="experience"
+        className="relative space-y-12 pt-8 px-2 sm:px-0"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -241,12 +300,24 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-center space-y-2"
         >
-          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
+          >
             My Work
-          </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
+          >
             Experience
-          </h2>
+          </motion.h2>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Here&apos;s a summary of my professional journey and educational
             background in software development.
@@ -257,12 +328,16 @@ export default function Home() {
             <motion.li
               key={exp.time + exp.title}
               className="relative ml-10 py-4"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: idx * 0.15 }}
+              variants={fadeSlide}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
             >
-              <div className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full">
+              <motion.div
+                className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full border w-12 h-12 shadow-sm"
+                variants={dotVariants}
+                whileHover="hover"
+              >
                 <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
                   <Image
                     src={exp.logo}
@@ -276,8 +351,8 @@ export default function Home() {
                     }
                   />
                 </span>
-              </div>
-              <div className="flex flex-1 flex-col justify-start gap-1">
+              </motion.div>
+              <div className="flex-1 flex flex-col justify-start gap-1 bg-transparent">
                 <time className="text-xs text-muted-foreground">
                   {exp.time} • {exp.time_count}
                 </time>
@@ -285,13 +360,13 @@ export default function Home() {
                 <span className="prose dark:prose-invert text-sm text-muted-foreground">
                   {exp.desc}
                 </span>
-              </div>
-              <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
-                <div
-                  className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 flex gap-2"
-                  title={exp.company}
-                >
-                  {exp.company}
+                <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
+                  <div
+                    className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80 flex gap-2"
+                    title={exp.company}
+                  >
+                    {exp.company}
+                  </div>
                 </div>
               </div>
             </motion.li>
@@ -301,18 +376,18 @@ export default function Home() {
 
       <section
         id="certifications"
-        className="relative flex flex-col min-h-0 gap-y-3"
+        className="relative flex flex-col min-h-0 gap-y-3 glass section-border rounded-elegant p-5"
       >
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
           viewport={{ once: true }}
-          className="text-xl font-bold"
+          className="text-2xl font-extrabold mb-4"
         >
           Certifications
         </motion.h2>
-        {certifications.map((cert, idx) => (
+        {certifications.map((cert) => (
           <motion.a
             key={cert.href}
             initial={{ opacity: 0, y: 30 }}
@@ -330,7 +405,7 @@ export default function Home() {
                     height={48}
                     src={cert.logo}
                     alt={cert.alt}
-                    className="aspect-square h-full w-full object-contain"
+                    className="aspect-square h-full w-full object-contain shadow-md"
                   />
                 </span>
               </div>
@@ -353,36 +428,49 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="relative space-y-12 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center space-y-2"
-        >
-          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+      <motion.section
+        id="projects"
+        className="relative space-y-12 py-8"
+        variants={staggerSection}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <motion.div variants={fadeSlide} className="text-center space-y-2">
+          <motion.div
+            variants={fadeSlide}
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
+          >
             My Projects
-          </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          </motion.div>
+          <motion.h2
+            variants={fadeSlide}
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
+          >
             Featured Projects
-          </h2>
-          <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+          </motion.h2>
+          <motion.p
+            variants={fadeSlide}
+            className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+          >
             Some of my recent work
-          </p>
+          </motion.p>
         </motion.div>
-
-        <div className="grid gap-8">
-          {projects.map((project, index) => (
+        <motion.div
+          className="grid gap-8"
+          variants={staggerSection}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {projects.map((project) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col md:flex-row bg-card rounded-lg overflow-hidden group shadow-md transition-all duration-300 hover:bg-slate-800/50 hover:backdrop-blur-sm hover:shadow-lg p-2 md:p-3"
+              className="flex flex-col sm:flex-row glass section-border rounded-elegant overflow-hidden group transition-all duration-300 hover:scale-[1.025] hover:shadow-lg p-3 sm:p-5"
+              variants={fadeSlide}
+              whileHover={{ scale: 1.04, rotate: 1 }}
             >
-              <div className="relative w-full h-48 md:w-48 md:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden">
+              <div className="relative w-full h-48 sm:w-48 sm:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -391,30 +479,29 @@ export default function Home() {
                   unoptimized
                 />
               </div>
-              <div className="flex-1 flex flex-col justify-center space-y-2 pl-2">
-                <h3 className="font-semibold tracking-tight mt-2 md:mt-0 text-base">
+              <div className="flex-1 flex flex-col justify-center space-y-2 pl-0 sm:pl-2">
+                <h3 className="font-semibold tracking-tight mt-2 sm:mt-0 text-base">
                   {project.title}
                 </h3>
                 <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight">
                   <p>{project.description}</p>
                 </div>
-
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 px-1 py-0 text-[10px]"
+                      className="inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 px-2 py-0.5 text-xs font-mono tracking-wide shadow-sm"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-row gap-2">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-primary/80 flex gap-2 px-2 py-1 text-[10px]"
+                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                   >
                     <FiGithub className="w-4 h-4" />
                     Code
@@ -423,7 +510,7 @@ export default function Home() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-primary/80 flex gap-2 px-2 py-1 text-[10px]"
+                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                   >
                     <FiGlobe className="w-4 h-4" />
                     Live
@@ -432,11 +519,11 @@ export default function Home() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Contact Section */}
-      <section id="contact" className="relative ">
+      <section id="contact" className="relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -444,16 +531,28 @@ export default function Home() {
           viewport={{ once: true }}
           className="grid place-items-center space-y-3 px-4 text-center md:px-6 w-full py-12"
         >
-          <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
+          >
             Contact
-          </div>
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
+          >
             Get In Touch
-          </h2>
+          </motion.h2>
           <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Let&apos;s connect! Feel free to reach out{' '}
             <a
-              className="underline dark:text-white text-black dark:hover:text-white/90 hover:text-gray-700"
+              className="underline text-white"
               href="https://www.linkedin.com/in/raghvendrrsingh"
             >
               via LinkedIn
@@ -462,7 +561,7 @@ export default function Home() {
           </p>
           <motion.a
             href="mailto:raghvendrrsingh@gmail.com"
-            className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold btn-3d mb-8"
+            className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold btn-accent mb-8 shadow-lg hover:shadow-xl focus:ring-2 focus:ring-accent focus:ring-offset-2 transition-all duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -63,10 +63,10 @@ export default function NavItems() {
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 md:top-4 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14 ">
       <motion.div
-        className="absolute left-1/2 -translate-x-1/2 p-2 rounded-full z-50 pointer-events-auto flex min-h-full h-full items-center px-1 border border-[var(--border)] bg-[rgba(10,25,47,0.55)] backdrop-blur-xl [box-shadow:0_8px_32px_0_rgba(31,38,135,0.15)] transform-gpu"
+        className="absolute left-1/2 -translate-x-1/2 p-2 rounded-full z-50 pointer-events-auto flex min-h-full h-full items-center px-1 border border-[var(--border)] glass shadow-lg transform-gpu"
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
-        animate={{ width: navWidth }}
+        animate={{ width: navWidth + 48 }}
         transition={{ type: 'spring', stiffness: 260, damping: 24 }}
         style={{ overflow: 'hidden' }}
       >
@@ -89,11 +89,11 @@ export default function NavItems() {
             return (
               <motion.div
                 key={idx}
-                className="flex-1 flex aspect-square cursor-pointer items-center justify-center rounded-full min-w-0"
+                className="flex-1 flex aspect-square cursor-pointer items-center justify-center rounded-full min-w-0 transition-all duration-200 hover:bg-accent/20 hover:shadow-lg hover:scale-110"
               >
                 {item.isInternal && item.href ? (
                   <Link
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-full size-12 w-full h-full"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-white rounded-full size-12 w-full h-full"
                     aria-label={item.aria}
                     href={item.href}
                   >
@@ -101,7 +101,7 @@ export default function NavItems() {
                   </Link>
                 ) : item.href ? (
                   <a
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-full size-12 w-full h-full"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-white rounded-full size-12 w-full h-full"
                     aria-label={item.aria}
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}

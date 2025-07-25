@@ -37,7 +37,7 @@ export default function SocialIcons() {
       {socialLinks.map((social, index) => (
         <motion.a
           key={index}
-          className="flex justify-center mb-8"
+          className="flex justify-center mb-8 transition-transform duration-200 hover:scale-125 hover:drop-shadow-[0_0_8px_var(--accent)]"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
