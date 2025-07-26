@@ -3,9 +3,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FiGithub, FiHome, FiLinkedin } from 'react-icons/fi';
+import { FiBriefcase, FiGithub, FiHome, FiLinkedin } from 'react-icons/fi';
 import { LiaHackerrank } from 'react-icons/lia';
-import { RiTwitterXFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
 
 export default function NavItems() {
@@ -18,6 +17,13 @@ export default function NavItems() {
       href: '/',
       aria: 'Home',
       icon: <FiHome className="size-4" />, // Home
+      isInternal: true,
+    },
+    {
+      type: 'link',
+      href: '/projects',
+      aria: 'Projects',
+      icon: <FiBriefcase className="size-4" />, // Projects
       isInternal: true,
     },
     { type: 'divider' },
@@ -49,13 +55,6 @@ export default function NavItems() {
       icon: <SiLeetcode className="size-4" />, // Leetcode
       isInternal: false,
     },
-    {
-      type: 'link',
-      href: 'https://x.com/raghvendrrsingh',
-      aria: 'X',
-      icon: <RiTwitterXFill className="size-4" />, // X
-      isInternal: false,
-    },
   ];
 
   const navWidth = isHovered ? 300 : 250;
@@ -78,7 +77,7 @@ export default function NavItems() {
                   key={idx}
                   data-orientation="vertical"
                   role="none"
-                  className={`shrink-0 bg-border w-[1px] h-full${
+                  className={`shrink-0 bg-muted-foreground w-[1px] h-full${
                     idx === navItems.length - 2 ? ' py-2' : ''
                   }`}
                 />
