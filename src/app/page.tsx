@@ -1,24 +1,18 @@
 'use client';
 
+import Icon3D from '@/components/3DIcon';
+import SocialIcons from '@/components/SocialIcons';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
-import Icon3D from '../components/3DIcon';
-import NavItems from '../components/NavItems';
-import SocialIcons from '../components/SocialIcons';
 
 export default function Home() {
-  const [isLoaded, setIsLoaded] = useState(false);
   // Typewriter alternating title state
   const titles = ['Software Engineer', 'Full Stack Developer'];
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [typing, setTyping] = useState(true);
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
 
   // Typewriter effect for alternating titles
   useEffect(() => {
@@ -164,20 +158,6 @@ export default function Home() {
     },
   ];
 
-  // Animation variants for staggered project cards
-  const projectListVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.18,
-      },
-    },
-  };
-  const projectCardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-  };
-
   // Animation variants for staggered section content
   const staggerSection = {
     hidden: {},
@@ -200,28 +180,8 @@ export default function Home() {
     hover: { scale: 1.2, boxShadow: '0 0 0 4px rgba(127,90,240,0.15)' },
   };
 
-  if (!isLoaded) return null;
-
   return (
-    <main className="font-sans min-h-screen bg-background text-foreground relative max-w-2xl mx-auto md:mt-10 space-y-16 py-10 sm:py-16 px-2 sm:px-6">
-      {/* Navigation */}
-      <NavItems />
-
-      {/* Email Fixed on the right side of the screen */}
-      <div className="w-10 fixed bottom-0 left-auto right-10 z-10 hidden lg:block">
-        <div className="flex flex-col items-center relative after:block after:w-[1px] after:h-[90px] after:my-0 after:mx-auto after:bg-foreground">
-          <a
-            className="my-5 mx-auto p-2.5 text-xs leading-5 tracking-widest hover:-translate-y-1 focus:-translate-y-1 text-muted-foreground hover:text-accent-gradient text-accent-gradient"
-            style={{ writingMode: 'vertical-rl' }}
-            href={`mailto:raghvendrrsingh@gmail.com`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            raghvendrrsingh@gmail.com
-          </a>
-        </div>
-      </div>
-
+    <>
       {/* Hero Section */}
       <section
         id="hero"
@@ -236,7 +196,7 @@ export default function Home() {
           style={{ willChange: 'transform' }}
         >
           <motion.h1
-            className="text-4xl font-extrabold tracking-tighter sm:text-6xl xl:text-7xl/none mb-2"
+            className="text-4xl font-extrabold tracking-tighter sm:text-7xl/none mb-2"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
@@ -577,6 +537,6 @@ export default function Home() {
           <SocialIcons />
         </motion.div>
       </section>
-    </main>
+    </>
   );
 }

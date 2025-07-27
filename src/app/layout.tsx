@@ -1,3 +1,4 @@
+import Wrapper from '@/components/Wrapper';
 import type { Metadata } from 'next';
 import { Geist_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
@@ -55,7 +56,7 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Wrapper>{children}</Wrapper>
       </body>
     </html>
   );
