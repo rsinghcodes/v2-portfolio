@@ -2,6 +2,7 @@
 
 import Icon3D from '@/components/3DIcon';
 import SocialIcons from '@/components/SocialIcons';
+import ThemeToggle from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
@@ -182,6 +183,7 @@ export default function Home() {
 
   return (
     <>
+      <ThemeToggle />
       {/* Hero Section */}
       <section
         id="hero"
@@ -239,10 +241,15 @@ export default function Home() {
             <p>
               I&apos;m passionate about building innovative solutions that
               positively impact people&apos;s lives. I have over{' '}
-              <strong>3 years of experience</strong> in software development,
-              having worked for a startup to{' '}
-              <strong>build B2B SaaS products</strong>. I am always eager to
-              learn new things and to push the boundaries of what is possible.
+              <span className="text-foreground font-semibold">
+                3 years of experience
+              </span>{' '}
+              in software development, having worked for a startup to{' '}
+              <span className="text-foreground font-semibold">
+                build B2B SaaS products
+              </span>
+              . I am always eager to learn new things and to push the boundaries
+              of what is possible.
             </p>
           </div>
         </motion.div>
@@ -461,7 +468,7 @@ export default function Home() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
+                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                   >
                     <FiGithub className="w-4 h-4" />
                     Code
@@ -470,7 +477,7 @@ export default function Home() {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
+                    className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                   >
                     <FiGlobe className="w-4 h-4" />
                     Live
@@ -512,7 +519,7 @@ export default function Home() {
           <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Let&apos;s connect! Feel free to reach out{' '}
             <a
-              className="underline text-white"
+              className="underline text-foreground"
               href="https://www.linkedin.com/in/raghvendrrsingh"
             >
               via LinkedIn

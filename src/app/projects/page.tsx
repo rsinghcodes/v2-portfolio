@@ -1,5 +1,6 @@
 'use client';
 
+import ThemeToggle from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
@@ -55,6 +56,7 @@ const projects = [
 export default function Projects() {
   return (
     <>
+      <ThemeToggle />
       <h1 className="text-4xl font-extrabold mb-8 text-center">Projects</h1>
       <div className="grid gap-8">
         {projects.map((project) => (
@@ -98,7 +100,7 @@ export default function Projects() {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
+                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                 >
                   <FiGithub className="w-4 h-4" />
                   Code
@@ -107,7 +109,7 @@ export default function Projects() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-white text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
+                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
                 >
                   <FiGlobe className="w-4 h-4" />
                   Live

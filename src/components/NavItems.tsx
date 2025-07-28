@@ -92,7 +92,7 @@ export default function NavItems() {
               >
                 {item.isInternal && item.href ? (
                   <Link
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-white rounded-full size-12 w-full h-full"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
                     aria-label={item.aria}
                     href={item.href}
                   >
@@ -100,7 +100,7 @@ export default function NavItems() {
                   </Link>
                 ) : item.href ? (
                   <a
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-white rounded-full size-12 w-full h-full"
+                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
                     aria-label={item.aria}
                     href={item.href}
                     target={item.href.startsWith('http') ? '_blank' : undefined}

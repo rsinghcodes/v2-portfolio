@@ -1,6 +1,7 @@
 import Wrapper from '@/components/Wrapper';
 import type { Metadata } from 'next';
 import { Geist_Mono, Plus_Jakarta_Sans } from 'next/font/google';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './globals.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -56,7 +57,9 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Wrapper>{children}</Wrapper>
+        <ThemeProvider>
+          <Wrapper>{children}</Wrapper>
+        </ThemeProvider>
       </body>
     </html>
   );
