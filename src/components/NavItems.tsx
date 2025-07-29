@@ -1,5 +1,6 @@
 'use client';
 
+import Tooltip from '@/components/Tooltip';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -9,13 +10,14 @@ import { SiLeetcode } from 'react-icons/si';
 
 export default function NavItems() {
   const [isHovered, setIsHovered] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
-  // List of nav items for easier mapping
   const navItems = [
     {
       type: 'link',
       href: '/',
       aria: 'Home',
+      tooltip: 'Home',
       icon: <FiHome className="size-4" />, // Home
       isInternal: true,
     },
@@ -23,6 +25,7 @@ export default function NavItems() {
       type: 'link',
       href: '/projects',
       aria: 'Projects',
+      tooltip: 'Projects',
       icon: <FiBriefcase className="size-4" />, // Projects
       isInternal: true,
     },
@@ -31,6 +34,7 @@ export default function NavItems() {
       type: 'link',
       href: 'https://github.com/rsinghcodes',
       aria: 'GitHub',
+      tooltip: 'GitHub',
       icon: <FiGithub className="size-4" />, // GitHub
       isInternal: false,
     },
@@ -38,6 +42,7 @@ export default function NavItems() {
       type: 'link',
       href: 'https://www.linkedin.com/in/raghvendrrsingh',
       aria: 'LinkedIn',
+      tooltip: 'LinkedIn',
       icon: <FiLinkedin className="size-4" />, // LinkedIn
       isInternal: false,
     },
@@ -45,6 +50,7 @@ export default function NavItems() {
       type: 'link',
       href: 'https://www.hackerrank.com/profile/rsinghcodes',
       aria: 'Hackerrank',
+      tooltip: 'HackerRank',
       icon: <LiaHackerrank className="size-5" />, // Hackerrank
       isInternal: false,
     },
@@ -52,6 +58,7 @@ export default function NavItems() {
       type: 'link',
       href: 'https://leetcode.com/u/rsinghcodes/',
       aria: 'Leetcode',
+      tooltip: 'LeetCode',
       icon: <SiLeetcode className="size-4" />, // Leetcode
       isInternal: false,
     },
@@ -67,7 +74,6 @@ export default function NavItems() {
         onHoverEnd={() => setIsHovered(false)}
         animate={{ width: navWidth + 48 }}
         transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-        style={{ overflow: 'hidden' }}
       >
         <div className="flex w-full h-full items-center gap-1">
           {navItems.map((item, idx) => {
@@ -84,35 +90,43 @@ export default function NavItems() {
               );
             }
 
-            // Link icons
             return (
               <motion.div
                 key={idx}
                 className="flex-1 flex aspect-square cursor-pointer items-center justify-center rounded-full min-w-0 transition-all duration-200 hover:bg-accent/20 hover:shadow-lg hover:scale-110"
+                onHoverStart={() => setHoveredItem(idx)}
+                onHoverEnd={() => setHoveredItem(null)}
               >
-                {item.isInternal && item.href ? (
-                  <Link
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
-                    aria-label={item.aria}
-                    href={item.href}
-                  >
-                    {item.icon}
-                  </Link>
-                ) : item.href ? (
-                  <a
-                    className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
-                    aria-label={item.aria}
-                    href={item.href}
-                    target={item.href.startsWith('http') ? '_blank' : undefined}
-                    rel={
-                      item.href.startsWith('http')
-                        ? 'noopener noreferrer'
-                        : undefined
-                    }
-                  >
-                    {item.icon}
-                  </a>
-                ) : null}
+                <Tooltip
+                  content={item.tooltip || item.aria || ''}
+                  isVisible={hoveredItem === idx}
+                >
+                  {item.isInternal && item.href ? (
+                    <Link
+                      className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
+                      aria-label={item.aria}
+                      href={item.href}
+                    >
+                      {item.icon}
+                    </Link>
+                  ) : item.href ? (
+                    <a
+                      className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-foreground rounded-full size-12 w-full h-full"
+                      aria-label={item.aria}
+                      href={item.href}
+                      target={
+                        item.href.startsWith('http') ? '_blank' : undefined
+                      }
+                      rel={
+                        item.href.startsWith('http')
+                          ? 'noopener noreferrer'
+                          : undefined
+                      }
+                    >
+                      {item.icon}
+                    </a>
+                  ) : null}
+                </Tooltip>
               </motion.div>
             );
           })}

@@ -187,7 +187,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative glass section-border rounded-elegant p-5 sm:p-8"
+        className="relative glass section-border rounded-elegant p-5 sm:p-8 flex justify-between gap-2"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -198,15 +198,16 @@ export default function Home() {
           style={{ willChange: 'transform' }}
         >
           <motion.h1
-            className="text-4xl font-extrabold tracking-tighter sm:text-7xl/none mb-2"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7 }}
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl/none"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
           >
             Hi, I&apos;m Raghvendra 👋
           </motion.h1>
+
           <motion.h2
-            className="block md:whitespace-nowrap tracking-tight md:text-2xl font-semibold overflow-hidden mb-2"
+            className="block md:whitespace-nowrap tracking-tight md:text-xl font-medium overflow-hidden"
             style={{
               minHeight: '1.5em',
               whiteSpace: 'pre',
@@ -219,6 +220,24 @@ export default function Home() {
             {displayedText}
             <span className="blinking-cursor">|</span>
           </motion.h2>
+        </motion.div>
+        <motion.div
+          className="relative"
+          initial={{ scale: 0, rotate: -180 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ duration: 0.8, type: 'spring', stiffness: 200 }}
+        >
+          {/* Profile photo */}
+          <div className="relative size-24 sm:size-32 rounded-full overflow-hidden border-4 border-background bg-background">
+            <Image
+              src="https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1756944000&v=beta&t=5pxS-rbpkQg7ZrdLAePMjz4EqkTEeOpjwPCTHsvYbAU"
+              alt="Raghvendra Singh"
+              width={128}
+              height={128}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
         </motion.div>
       </section>
 
