@@ -4,8 +4,10 @@ import Tooltip from '@/components/Tooltip';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
-import { FiBriefcase, FiGithub, FiHome, FiLinkedin } from 'react-icons/fi';
+import { BsFillJournalBookmarkFill } from 'react-icons/bs';
+import { FiGithub, FiHome, FiLinkedin } from 'react-icons/fi';
 import { LiaHackerrank } from 'react-icons/lia';
+import { LuFolderCog } from 'react-icons/lu';
 import { SiLeetcode } from 'react-icons/si';
 
 export default function NavItems() {
@@ -26,10 +28,18 @@ export default function NavItems() {
       href: '/projects',
       aria: 'Projects',
       tooltip: 'Projects',
-      icon: <FiBriefcase className="size-4" />, // Projects
+      icon: <LuFolderCog className="size-4" />, // Projects
       isInternal: true,
     },
     { type: 'divider' },
+    {
+      type: 'link',
+      href: 'https://raghvendrasingh.hashnode.dev/',
+      aria: 'Blogs',
+      tooltip: 'Blogs',
+      icon: <BsFillJournalBookmarkFill className="size-4" />, // Projects
+      isInternal: false,
+    },
     {
       type: 'link',
       href: 'https://github.com/rsinghcodes',
@@ -64,7 +74,7 @@ export default function NavItems() {
     },
   ];
 
-  const navWidth = isHovered ? 300 : 250;
+  const navWidth = isHovered ? 330 : 280;
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 md:top-4 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14 ">
