@@ -34,6 +34,15 @@ const projects = [
     live: 'https://intercup.netlify.app/',
   },
   {
+    title: 'Anonymous Message',
+    description:
+      'Built an anonymous messaging platform with Next.js, MongoDB, NextAuth, Tailwind CSS, and Shadcn UI for secure send/receive interactions.',
+    tech: ['Next.js', 'Tailwind CSS', 'Shadcn UI', 'PostgreSQL'],
+    image: '/assets/projects/anonymous.png',
+    link: 'https://github.com/rsinghcodes/anonymous-message',
+    live: 'https://pinganonymous.netlify.app/',
+  },
+  {
     title: 'Portfolio Website',
     description:
       'A personal portfolio website built with Next.js, React, and Tailwind CSS, featuring advanced animations and a modern UI.',
