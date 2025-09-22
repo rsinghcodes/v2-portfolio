@@ -1,12 +1,18 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://rsinghcodes.netlify.app',
+      url: 'https://rsingh.codes',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
-  ]
-} 
+    {
+      url: 'https://rsingh.codes/projects',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+  ];
+}

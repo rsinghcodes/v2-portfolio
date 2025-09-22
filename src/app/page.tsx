@@ -230,7 +230,7 @@ export default function Home() {
           {/* Profile photo */}
           <div className="relative size-24 sm:size-32 rounded-full overflow-hidden border-4 border-background bg-background">
             <Image
-              src="https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1756944000&v=beta&t=5pxS-rbpkQg7ZrdLAePMjz4EqkTEeOpjwPCTHsvYbAU"
+              src="https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1761177600&v=beta&t=tDJRNkcJ2EEAGDmRCgvU2Fv-JOLZFClBfpseSHs6kVU"
               alt="Raghvendra Singh"
               width={128}
               height={128}
