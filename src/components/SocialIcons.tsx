@@ -24,12 +24,6 @@ export default function SocialIcons() {
       url: 'https://github.com/rsinghcodes',
       size: 28,
     },
-    {
-      src: '/icons/mail.png',
-      alt: 'Email',
-      url: 'mailto:raghvendrrsingh@gmail.com',
-      size: 32,
-    },
   ];
 
   return (

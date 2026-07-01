@@ -1,0 +1,185 @@
+{
+  "titles": [
+    "Software Engineer",
+    "AI Engineer",
+    "Full Stack Developer"
+  ],
+  "skills": [
+    {
+      "category": "Frontend & Mobile",
+      "items": [
+        "React",
+        "Next.js",
+        "React Native",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Three.js"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-primary/20 text-primary border border-primary/30"
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "GraphQL",
+        "REST APIs"
+      ],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-secondary/20 text-secondary-foreground border border-secondary/30"
+    },
+    {
+      "category": "AI Engineering",
+      "items": [
+        "LangChain",
+        "OpenAI APIs",
+        "TensorFlow",
+        "Vector DBs",
+        "LLMs",
+        "Prompt Eng."
+      ],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-accent/20 text-accent border border-accent/30 shadow-[0_0_10px_rgba(127,90,240,0.3)]"
+    },
+    {
+      "category": "Cloud, DBs & DevOps",
+      "items": [
+        "AWS",
+        "Docker",
+        "MongoDB",
+        "PostgreSQL",
+        "Supabase",
+        "CI/CD",
+        "Git"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-foreground/10 text-foreground border border-foreground/20"
+    }
+  ],
+  "experience": [
+    {
+      "logo": "/assets/college.png",
+      "alt": "American Technology Consulting Logo",
+      "time": "Sep 2024 - May 2026",
+      "title": "Master of Computer Applications",
+      "time_count": "2 years",
+      "desc": "Coursework: Software Engineering, AI & ML, Data Structure Design and Analysis of Algorithms, Database Management System, Computer Networks",
+      "company": "Dr. APJ Abdul Kalam Technical University, Lucknow"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Jan 2023 - Aug 2024",
+      "title": "Software Engineer 1",
+      "time_count": "1 year 8 months",
+      "desc": "Worked as a Full Stack Engineer, building APIs and documentation for Auzmor (an Employee Experience platform) and co-developing the Reveal application — a survey-based management tool—from scratch, covering both frontend and backend.",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Jun 2022 - Dec 2022",
+      "time_count": "7 months",
+      "title": "Associate Software Engineer",
+      "desc": "Contributed to the Freshflows team (B2B SaaS product) by developing user interfaces/components and integrating backend APIs to deliver seamless functionality.",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Mar 2022 - May 2022",
+      "time_count": "3 months",
+      "title": "Software Engineer Intern",
+      "desc": "Developed an Employee Time Tracking web application using React, Express.js, Node.js, and MongoDB, enabling employees to log work hours and provide detailed descriptions of tasks performed. ",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/magazine3.png",
+      "alt": "Magazine3 Technologies",
+      "time": "May 2021 - Oct 2021",
+      "time_count": "6 months",
+      "title": "Magazine3 Technologies",
+      "desc": "Enhanced website performance and user experience by optimizing Core Web Vitals (LCP, CLS, TTFB) through image optimization, caching strategies, and code minification, achieving high PageSpeed and Lighthouse scores.",
+      "company": "Junior Developer"
+    }
+  ],
+  "projects": [
+    {
+      "title": "ReadList - A blog web app",
+      "description": "ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.",
+      "tech": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "GraphQL",
+        "Apollo Server"
+      ],
+      "image": "/assets/projects/readlist.png",
+      "link": "https://github.com/rsinghcodes/readlist",
+      "live": "https://readlistapp.netlify.app/"
+    },
+    {
+      "title": "Votify - A mobile voting app",
+      "description": "A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.",
+      "tech": [
+        "React Native",
+        "Supabase",
+        "Expo"
+      ],
+      "image": "/assets/projects/votify.png",
+      "link": "https://github.com/rsinghcodes/votify",
+      "live": "https://github.com/rsinghcodes/votify"
+    },
+    {
+      "title": "InterCup - An interview preparation app",
+      "description": "InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.",
+      "tech": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express"
+      ],
+      "image": "/assets/projects/intercup.png",
+      "link": "https://github.com/rsinghcodes/intercup",
+      "live": "https://intercup.netlify.app/"
+    }
+  ],
+  "certifications": [
+    {
+      "href": "https://www.hackerrank.com/certificates/0377f0ca48fa",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Software Engineer Intern",
+      "date": "Aug 2024",
+      "org": "HackerRank"
+    },
+    {
+      "href": "https://www.hackerrank.com/certificates/f32c792e4bf9",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Frontend Developer (React)",
+      "date": "Aug 2024",
+      "org": "HackerRank"
+    },
+    {
+      "href": "http://ude.my/UC-6c946f39-3f52-43bd-bbf9-69662ab408fa",
+      "logo": "/assets/udemy-logo.png",
+      "alt": "Udemy",
+      "title": "Linux Administration Bootcamp: Go from Beginner to Advanced",
+      "date": "Mar 2023",
+      "org": "Udemy"
+    },
+    {
+      "href": "https://coursera.org/share/173f0186a12f6bb1a00536de9540c357",
+      "logo": "/assets/coursera-logo.png",
+      "alt": "Coursera",
+      "title": "Responsive Website Basics: Code with HTML, CSS, and JavaScript",
+      "date": "May 2020",
+      "org": "Coursera"
+    }
+  ]
+}

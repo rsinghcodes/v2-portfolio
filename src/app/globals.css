@@ -2,18 +2,18 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #0a192f;
+  --background: #030014;
   --foreground: #e2e8f0;
-  --muted: #f8fafc;
+  --muted: #0a0118;
   --muted-foreground: #8892b0;
-  --border: #e2e8f0;
-  --ring: #3b82f6;
-  --radius: 0.5rem;
-  --accent: #7f5af0; /* Vibrant accent color */
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
-  --glass-bg: rgba(10, 25, 47, 0.55);
-  --glass-blur: blur(16px);
-  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --border: #1e1b4b;
+  --ring: #7f5af0;
+  --radius: 0.75rem;
+  --accent: #7f5af0;
+  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
+  --glass-bg: rgba(3, 0, 20, 0.65);
+  --glass-blur: blur(20px);
+  --card-shadow: 0 0 20px 0 rgba(127, 90, 240, 0.15);
 }
 
 [data-theme='light'] {
@@ -24,24 +24,24 @@
   --border: #e2e8f0;
   --ring: #3b82f6;
   --accent: #7f5af0;
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-blur: blur(16px);
+  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: blur(20px);
   --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
-  --background: #0a192f;
+  --background: #030014;
   --foreground: #e2e8f0;
-  --muted: #f8fafc;
+  --muted: #0a0118;
   --muted-foreground: #8892b0;
-  --border: #e2e8f0;
-  --ring: #3b82f6;
+  --border: #1e1b4b;
+  --ring: #7f5af0;
   --accent: #7f5af0;
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #2cb67d 100%);
-  --glass-bg: rgba(10, 25, 47, 0.55);
-  --glass-blur: blur(16px);
-  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
+  --glass-bg: rgba(3, 0, 20, 0.65);
+  --glass-blur: blur(20px);
+  --card-shadow: 0 0 20px 0 rgba(127, 90, 240, 0.15);
 }
 
 @theme inline {
@@ -105,6 +105,22 @@ html {
   -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
+  border: 1px solid rgba(127, 90, 240, 0.15);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  border: 1px solid rgba(0, 242, 254, 0.3);
+  box-shadow: 0 0 25px 0 rgba(0, 242, 254, 0.15);
+}
+
+/* Gradient Text Utility */
+.text-gradient {
+  background: linear-gradient(to right, #00f2fe, #7f5af0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Accent button */
