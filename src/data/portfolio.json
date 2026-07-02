@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "title": "Raghvendra Singh - Software Engineer & Full Stack Developer",
+    "description": "Software Engineer with 3+ years of experience specializing in full-stack development, React, Node.js, Python, and modern web technologies. Building innovative B2B SaaS solutions with expertise in TypeScript, Next.js, Python, AI and cloud technologies.",
+    "keywords": [
+      "Software Engineer",
+      "Python Developer",
+      "AI Developer",
+      "Machine Learning Engineer",
+      "AI Enthusiast",
+      "Full Stack Developer",
+      "React",
+      "Node.js",
+      "TypeScript",
+      "Next.js",
+      "Frontend Development",
+      "Backend Development",
+      "MongoDB",
+      "GraphQL",
+      "React Native",
+      "Docker",
+      "AWS",
+      "Django",
+      "FastAPI",
+      "Supabase",
+      "LangChain",
+      "LLM",
+      "PostgreSQL"
+    ],
+    "authors": [
+      {
+        "name": "Raghvendra Singh"
+      }
+    ],
+    "creator": "Raghvendra Singh",
+    "publisher": "Raghvendra Singh",
+    "category": "Technology",
+    "classification": "Portfolio",
+    "openGraph": {
+      "type": "website",
+      "locale": "en_US",
+      "siteName": "Raghvendra's Portfolio",
+      "url": "https://rsingh.codes",
+      "image": "https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1761177600&v=beta&t=tDJRNkcJ2EEAGDmRCgvU2Fv-JOLZFClBfpseSHs6kVU"
+    },
+    "twitterHandle": "@raghvendrrsingh"
+  },
+  "personal": {
+    "name": "Raghvendra",
+    "greeting": "Hi, I'm Raghvendra",
+    "email": "raghvendrrsingh@gmail.com"
+  },
+  "sections": {
+    "about": {
+      "title": "About",
+      "content": [
+        { "text": "I'm passionate about building innovative solutions that positively impact people's lives. I have over " },
+        { "text": "3+ years of experience", "highlight": true },
+        { "text": " in software development, having worked for a startup to " },
+        { "text": "build B2B SaaS products", "highlight": true },
+        { "text": ". I am always eager to learn new things and to push the boundaries of what is possible." }
+      ]
+    },
+    "skills": {
+      "subtitle": "My Expertise",
+      "title": "Technical Skills",
+      "description": "Technologies and tools I use to build scalable solutions."
+    },
+    "experience": {
+      "subtitle": "My Work",
+      "title": "Experience",
+      "description": "Here's a summary of my professional journey and educational background in software development."
+    },
+    "certifications": {
+      "title": "Certifications"
+    },
+    "projects": {
+      "subtitle": "My Projects",
+      "title": "Featured Projects",
+      "description": "Some of my recent work"
+    },
+    "contact": {
+      "subtitle": "Contact",
+      "title": "Get In Touch",
+      "description": {
+        "textBeforeLink": "Let's connect! Feel free to reach out ",
+        "linkText": "via LinkedIn",
+        "linkUrl": "https://www.linkedin.com/in/raghvendrrsingh",
+        "textAfterLink": " or I'll get back to you as soon as I can."
+      }
+    }
+  },
+  "navItems": [
+    {
+      "type": "link",
+      "id": "home",
+      "href": "/",
+      "aria": "Home",
+      "tooltip": "Home",
+      "isInternal": true
+    },
+    {
+      "type": "link",
+      "id": "projects",
+      "href": "/projects",
+      "aria": "Projects",
+      "tooltip": "Projects",
+      "isInternal": true
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "link",
+      "id": "blogs",
+      "href": "https://raghvendrasingh.hashnode.dev/",
+      "aria": "Blogs",
+      "tooltip": "Blogs",
+      "isInternal": false
+    },
+    {
+      "type": "link",
+      "id": "github",
+      "href": "https://github.com/rsinghcodes",
+      "aria": "GitHub",
+      "tooltip": "GitHub",
+      "isInternal": false
+    },
+    {
+      "type": "link",
+      "id": "linkedin",
+      "href": "https://www.linkedin.com/in/raghvendrrsingh",
+      "aria": "LinkedIn",
+      "tooltip": "LinkedIn",
+      "isInternal": false
+    },
+    {
+      "type": "link",
+      "id": "hackerrank",
+      "href": "https://www.hackerrank.com/profile/rsinghcodes",
+      "aria": "Hackerrank",
+      "tooltip": "HackerRank",
+      "isInternal": false
+    },
+    {
+      "type": "link",
+      "id": "leetcode",
+      "href": "https://leetcode.com/u/rsinghcodes/",
+      "aria": "Leetcode",
+      "tooltip": "LeetCode",
+      "isInternal": false
+    }
+  ],
+  "socialLinks": [
+    {
+      "src": "/icons/LinkedIn.png",
+      "alt": "LinkedIn",
+      "url": "https://linkedin.com/in/raghvendrrsingh",
+      "size": 32
+    },
+    {
+      "src": "/icons/github.png",
+      "alt": "GitHub",
+      "url": "https://github.com/rsinghcodes",
+      "size": 28
+    }
+  ],
+  "titles": [
+    "Software Engineer",
+    "AI Engineer",
+    "Full Stack Developer"
+  ],
+  "skills": [
+    {
+      "category": "Frontend & Mobile",
+      "items": [
+        "React",
+        "Next.js",
+        "React Native",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Three.js"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-primary/20 text-primary border border-primary/30"
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "GraphQL",
+        "REST APIs"
+      ],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-secondary/20 text-secondary-foreground border border-secondary/30"
+    },
+    {
+      "category": "AI Engineering",
+      "items": [
+        "LangChain",
+        "OpenAI APIs",
+        "TensorFlow",
+        "Vector DBs",
+        "LLMs",
+        "Prompt Eng."
+      ],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-accent/20 text-accent border border-accent/30 shadow-[0_0_10px_rgba(127,90,240,0.3)]"
+    },
+    {
+      "category": "Cloud, DBs & DevOps",
+      "items": [
+        "AWS",
+        "Docker",
+        "MongoDB",
+        "PostgreSQL",
+        "Supabase",
+        "CI/CD",
+        "Git"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-foreground/10 text-foreground border border-foreground/20"
+    }
+  ],
+  "experience": [
+    {
+      "logo": "/assets/college.png",
+      "alt": "American Technology Consulting Logo",
+      "time": "Sep 2024 - May 2026",
+      "title": "Master of Computer Applications",
+      "time_count": "2 years",
+      "desc": "Coursework: Software Engineering, AI & ML, Data Structure Design and Analysis of Algorithms, Database Management System, Computer Networks",
+      "company": "Dr. APJ Abdul Kalam Technical University, Lucknow"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Jan 2023 - Aug 2024",
+      "title": "Software Engineer 1",
+      "time_count": "1 year 8 months",
+      "desc": "Worked as a Full Stack Engineer, building APIs and documentation for Auzmor (an Employee Experience platform) and co-developing the Reveal application — a survey-based management tool—from scratch, covering both frontend and backend.",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Jun 2022 - Dec 2022",
+      "time_count": "7 months",
+      "title": "Associate Software Engineer",
+      "desc": "Contributed to the Freshflows team (B2B SaaS product) by developing user interfaces/components and integrating backend APIs to deliver seamless functionality.",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/atc-logo.webp",
+      "alt": "American Technology Consulting Logo",
+      "time": "Mar 2022 - May 2022",
+      "time_count": "3 months",
+      "title": "Software Engineer Intern",
+      "desc": "Developed an Employee Time Tracking web application using React, Express.js, Node.js, and MongoDB, enabling employees to log work hours and provide detailed descriptions of tasks performed. ",
+      "company": "American Technology Consulting"
+    },
+    {
+      "logo": "/assets/magazine3.png",
+      "alt": "Magazine3 Technologies",
+      "time": "May 2021 - Oct 2021",
+      "time_count": "6 months",
+      "title": "Magazine3 Technologies",
+      "desc": "Enhanced website performance and user experience by optimizing Core Web Vitals (LCP, CLS, TTFB) through image optimization, caching strategies, and code minification, achieving high PageSpeed and Lighthouse scores.",
+      "company": "Junior Developer"
+    }
+  ],
+  "projects": [
+    {
+      "title": "ReadList - A blog web app",
+      "description": "ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.",
+      "tech": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "GraphQL",
+        "Apollo Server"
+      ],
+      "image": "/assets/projects/readlist.png",
+      "link": "https://github.com/rsinghcodes/readlist",
+      "live": "https://readlistapp.netlify.app/"
+    },
+    {
+      "title": "Votify - A mobile voting app",
+      "description": "A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.",
+      "tech": [
+        "React Native",
+        "Supabase",
+        "Expo"
+      ],
+      "image": "/assets/projects/votify.png",
+      "link": "https://github.com/rsinghcodes/votify",
+      "live": "https://github.com/rsinghcodes/votify"
+    },
+    {
+      "title": "InterCup - An interview preparation app",
+      "description": "InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.",
+      "tech": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express"
+      ],
+      "image": "/assets/projects/intercup.png",
+      "link": "https://github.com/rsinghcodes/intercup",
+      "live": "https://intercup.netlify.app/"
+    }
+  ],
+  "certifications": [
+    {
+      "href": "https://www.hackerrank.com/certificates/0377f0ca48fa",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Software Engineer Intern",
+      "date": "Aug 2024",
+      "org": "HackerRank"
+    },
+    {
+      "href": "https://www.hackerrank.com/certificates/f32c792e4bf9",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Frontend Developer (React)",
+      "date": "Aug 2024",
+      "org": "HackerRank"
+    },
+    {
+      "href": "http://ude.my/UC-6c946f39-3f52-43bd-bbf9-69662ab408fa",
+      "logo": "/assets/udemy-logo.png",
+      "alt": "Udemy",
+      "title": "Linux Administration Bootcamp: Go from Beginner to Advanced",
+      "date": "Mar 2023",
+      "org": "Udemy"
+    },
+    {
+      "href": "https://coursera.org/share/173f0186a12f6bb1a00536de9540c357",
+      "logo": "/assets/coursera-logo.png",
+      "alt": "Coursera",
+      "title": "Responsive Website Basics: Code with HTML, CSS, and JavaScript",
+      "date": "May 2020",
+      "org": "Coursera"
+    }
+  ]
+}

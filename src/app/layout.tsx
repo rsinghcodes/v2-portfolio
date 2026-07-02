@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Geist_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { ThemeProvider } from './contexts/ThemeContext';
 import './globals.css';
+import portfolioData from '@/data/portfolio.json';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta-sans',
@@ -15,65 +16,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Raghvendra Singh - Software Engineer & Full Stack Developer',
-  description:
-    'Software Engineer with 3+ years of experience specializing in full-stack development, React, Node.js, Python, modern web and AI technologies. Building innovative B2B SaaS solutions with expertise in TypeScript, Next.js, Python, AI and cloud technologies.',
-  keywords: [
-    'Software Engineer',
-    'Python Developer',
-    'AI Developer',
-    'Machine Learning Engineer',
-    'AI Enthusiast',
-    'Full Stack Developer',
-    'React',
-    'Node.js',
-    'TypeScript',
-    'Next.js',
-    'Frontend Development',
-    'Backend Development',
-    'MongoDB',
-    'GraphQL',
-    'React Native',
-    'Docker',
-    'AWS',
-    'Django',
-    'FastAPI',
-    'Supabase',
-    'LangChain',
-    'LLM',
-    'PostgreSQL',
-  ],
-  authors: [{ name: 'Raghvendra Singh' }],
-  creator: 'Raghvendra Singh',
-  publisher: 'Raghvendra Singh',
-  category: 'Technology',
-  classification: 'Portfolio',
+  title: portfolioData.metadata.title,
+  description: portfolioData.metadata.description,
+  keywords: portfolioData.metadata.keywords,
+  authors: portfolioData.metadata.authors,
+  creator: portfolioData.metadata.creator,
+  publisher: portfolioData.metadata.publisher,
+  category: portfolioData.metadata.category,
+  classification: portfolioData.metadata.classification,
   openGraph: {
-    title: 'Raghvendra Singh - Software Engineer & Full Stack Developer',
-    description:
-      'Software Engineer with 3+ years of experience specializing in full-stack development, React, Node.js, Python, and modern web technologies. Building innovative B2B SaaS solutions with expertise in TypeScript, Next.js, Python, AI and cloud technologies.',
-    type: 'website',
-    locale: 'en_US',
-    siteName: "Raghvendra's Portfolio",
-    url: 'https://rsingh.codes',
+    title: portfolioData.metadata.title,
+    description: portfolioData.metadata.description,
+    type: portfolioData.metadata.openGraph.type as 'website',
+    locale: portfolioData.metadata.openGraph.locale,
+    siteName: portfolioData.metadata.openGraph.siteName,
+    url: portfolioData.metadata.openGraph.url,
     images: [
       {
-        url: 'https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1761177600&v=beta&t=tDJRNkcJ2EEAGDmRCgvU2Fv-JOLZFClBfpseSHs6kVU',
+        url: portfolioData.metadata.openGraph.image,
         width: 800,
         height: 800,
-        alt: 'Raghvendra Singh - Software Engineer',
+        alt: portfolioData.metadata.title,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Raghvendra Singh - Software Engineer & Full Stack Developer',
-    description:
-      'Software Engineer with 3+ years of experience specializing in full-stack development, React, Node.js, Python, and modern web technologies. Building innovative B2B SaaS solutions.',
-    creator: '@raghvendrrsingh',
-    images: [
-      'https://media.licdn.com/dms/image/v2/D5603AQEtnpHVtwu1AQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1716317546059?e=1761177600&v=beta&t=tDJRNkcJ2EEAGDmRCgvU2Fv-JOLZFClBfpseSHs6kVU',
-    ],
+    title: portfolioData.metadata.title,
+    description: portfolioData.metadata.description,
+    creator: portfolioData.metadata.twitterHandle,
+    images: [portfolioData.metadata.openGraph.image],
   },
   robots: {
     index: true,
@@ -87,20 +59,16 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.rsingh.codes',
+    canonical: portfolioData.metadata.openGraph.url,
   },
-  // verification: {
-  //   google: 'your-google-verification-code',
-  // },
   other: {
     'theme-color': '#000000',
     'color-scheme': 'dark light',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
-    'apple-mobile-web-app-title': 'Raghvendra Singh',
-    'application-name': 'Raghvendra Singh Portfolio',
+    'apple-mobile-web-app-title': portfolioData.personal.name,
+    'application-name': portfolioData.metadata.title,
     'msapplication-TileColor': '#000000',
-    // 'msapplication-config': '/browserconfig.xml',
   },
 };
 
