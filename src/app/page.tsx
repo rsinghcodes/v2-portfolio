@@ -14,7 +14,7 @@ import portfolioData from '@/data/portfolio.json';
 export default function Home() {
   // Typewriter alternating title state
   const titles = portfolioData.titles;
-  const { experience, projects, certifications, skills } = portfolioData;
+  const { experience, projects, certifications, skills, personal, sections } = portfolioData;
 
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
@@ -95,7 +95,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
           >
-            Hi, I&apos;m Raghvendra 👋
+            {personal.greeting}
           </motion.h1>
 
           <motion.h2
@@ -137,21 +137,15 @@ export default function Home() {
             variants={fadeSlide}
             className="text-2xl font-extrabold mb-4"
           >
-            About
+            {sections.about.title}
           </motion.h2>
           <div className="prose max-w-full font-sans text-muted-foreground prose-invert">
             <p>
-              I&apos;m passionate about building innovative solutions that
-              positively impact people&apos;s lives. I have over{' '}
-              <span className="text-foreground font-semibold">
-                3+ years of experience
-              </span>{' '}
-              in software development, having worked for a startup to{' '}
-              <span className="text-foreground font-semibold">
-                build B2B SaaS products
-              </span>
-              . I am always eager to learn new things and to push the boundaries
-              of what is possible.
+              {sections.about.content.map((segment, i) => (
+                <span key={i} className={segment.highlight ? "text-foreground font-semibold" : ""}>
+                  {segment.text}
+                </span>
+              ))}
             </p>
           </div>
         </motion.div>
@@ -171,19 +165,19 @@ export default function Home() {
             variants={fadeSlide}
             className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
           >
-            My Expertise
+            {sections.skills.subtitle}
           </motion.div>
           <motion.h2
             variants={fadeSlide}
             className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
           >
-            Technical Skills
+            {sections.skills.title}
           </motion.h2>
           <motion.p
             variants={fadeSlide}
             className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
           >
-            Technologies and tools I use to build scalable solutions.
+            {sections.skills.description}
           </motion.p>
         </motion.div>
 
@@ -224,7 +218,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
           >
-            My Work
+            {sections.experience.subtitle}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, x: -40 }}
@@ -233,11 +227,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
           >
-            Experience
+            {sections.experience.title}
           </motion.h2>
           <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Here&apos;s a summary of my professional journey and educational
-            background in software development.
+            {sections.experience.description}
           </p>
         </motion.div>
         <motion.ul className="mb-4 ml-4 divide-y divide-dashed border-l">
@@ -302,7 +295,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-3xl font-extrabold mb-4"
         >
-          Certifications
+          {sections.certifications.title}
         </motion.h2>
         {certifications.map((cert) => (
           <motion.a
@@ -358,19 +351,19 @@ export default function Home() {
             variants={fadeSlide}
             className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
           >
-            My Projects
+            {sections.projects.subtitle}
           </motion.div>
           <motion.h2
             variants={fadeSlide}
             className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
           >
-            Featured Projects
+            {sections.projects.title}
           </motion.h2>
           <motion.p
             variants={fadeSlide}
             className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
           >
-            Some of my recent work
+            {sections.projects.description}
           </motion.p>
         </motion.div>
         <motion.div
@@ -456,7 +449,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
           >
-            Contact
+            {sections.contact.subtitle}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, x: -40 }}
@@ -465,20 +458,20 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
           >
-            Get In Touch
+            {sections.contact.title}
           </motion.h2>
           <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-            Let&apos;s connect! Feel free to reach out{' '}
+            {sections.contact.description.textBeforeLink}
             <a
               className="underline text-foreground"
-              href="https://www.linkedin.com/in/raghvendrrsingh"
+              href={sections.contact.description.linkUrl}
             >
-              via LinkedIn
-            </a>{' '}
-            or I&apos;ll get back to you as soon as I can.
+              {sections.contact.description.linkText}
+            </a>
+            {sections.contact.description.textAfterLink}
           </p>
           <motion.a
-            href="mailto:raghvendrrsingh@gmail.com"
+            href={`mailto:${personal.email}`}
             className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold bg-foreground text-background hover:bg-foreground/90 mb-8 focus:ring-2 focus:ring-foreground focus:ring-offset-2 transition-colors duration-200"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -489,7 +482,7 @@ export default function Home() {
               size={20}
               hoverEffect={false}
             />
-            raghvendrrsingh@gmail.com
+            {personal.email}
           </motion.a>
 
           <SocialIcons />

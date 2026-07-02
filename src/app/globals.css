@@ -75,23 +75,18 @@ body {
   -webkit-backdrop-filter: var(--glass-blur);
 }
 
-/* Custom scrollbar */
+/* Hide scrollbar completely */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
+  width: 0;
+  background: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--muted);
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
-}
 
 /* Smooth scrolling */
 html {

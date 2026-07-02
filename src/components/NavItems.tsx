@@ -9,70 +9,26 @@ import { FiGithub, FiHome, FiLinkedin } from 'react-icons/fi';
 import { LiaHackerrank } from 'react-icons/lia';
 import { LuFolderCog } from 'react-icons/lu';
 import { SiLeetcode } from 'react-icons/si';
+import portfolioData from '@/data/portfolio.json';
+
+const iconMap: Record<string, React.ReactNode> = {
+  home: <FiHome className="size-4" />,
+  projects: <LuFolderCog className="size-4" />,
+  blogs: <BsFillJournalBookmarkFill className="size-4" />,
+  github: <FiGithub className="size-4" />,
+  linkedin: <FiLinkedin className="size-4" />,
+  hackerrank: <LiaHackerrank className="size-5" />,
+  leetcode: <SiLeetcode className="size-4" />,
+};
 
 export default function NavItems() {
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
-  const navItems = [
-    {
-      type: 'link',
-      href: '/',
-      aria: 'Home',
-      tooltip: 'Home',
-      icon: <FiHome className="size-4" />, // Home
-      isInternal: true,
-    },
-    {
-      type: 'link',
-      href: '/projects',
-      aria: 'Projects',
-      tooltip: 'Projects',
-      icon: <LuFolderCog className="size-4" />, // Projects
-      isInternal: true,
-    },
-    { type: 'divider' },
-    {
-      type: 'link',
-      href: 'https://raghvendrasingh.hashnode.dev/',
-      aria: 'Blogs',
-      tooltip: 'Blogs',
-      icon: <BsFillJournalBookmarkFill className="size-4" />, // Projects
-      isInternal: false,
-    },
-    {
-      type: 'link',
-      href: 'https://github.com/rsinghcodes',
-      aria: 'GitHub',
-      tooltip: 'GitHub',
-      icon: <FiGithub className="size-4" />, // GitHub
-      isInternal: false,
-    },
-    {
-      type: 'link',
-      href: 'https://www.linkedin.com/in/raghvendrrsingh',
-      aria: 'LinkedIn',
-      tooltip: 'LinkedIn',
-      icon: <FiLinkedin className="size-4" />, // LinkedIn
-      isInternal: false,
-    },
-    {
-      type: 'link',
-      href: 'https://www.hackerrank.com/profile/rsinghcodes',
-      aria: 'Hackerrank',
-      tooltip: 'HackerRank',
-      icon: <LiaHackerrank className="size-5" />, // Hackerrank
-      isInternal: false,
-    },
-    {
-      type: 'link',
-      href: 'https://leetcode.com/u/rsinghcodes/',
-      aria: 'Leetcode',
-      tooltip: 'LeetCode',
-      icon: <SiLeetcode className="size-4" />, // Leetcode
-      isInternal: false,
-    },
-  ];
+  const navItems = portfolioData.navItems.map((item) => ({
+    ...item,
+    icon: item.id ? iconMap[item.id] : null,
+  }));
 
   const navWidth = isHovered ? 330 : 280;
 
