@@ -2,67 +2,13 @@
 
 import ThemeToggle from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
-
-const projects = [
-  {
-    title: 'ReadList - A blog web app',
-    description:
-      'ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.',
-    tech: ['React', 'Node.js', 'MongoDB', 'GraphQL', 'Apollo Server'],
-    image: '/assets/projects/readlist.png',
-    link: 'https://github.com/rsinghcodes/readlist',
-    live: 'https://readlistapp.netlify.app/',
-  },
-  {
-    title: 'Votify - A mobile voting app',
-    description:
-      'A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.',
-    tech: ['React Native', 'Supabase', 'Expo'],
-    image: '/assets/projects/votify.png',
-    link: 'https://github.com/rsinghcodes/votify',
-    live: 'https://github.com/rsinghcodes/votify',
-  },
-  {
-    title: 'InterCup - An interview preparation app',
-    description:
-      'InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.',
-    tech: ['React', 'Node.js', 'MongoDB', 'Express'],
-    image: '/assets/projects/intercup.png',
-    link: 'https://github.com/rsinghcodes/intercup',
-    live: 'https://intercup.netlify.app/',
-  },
-  {
-    title: 'Anonymous Message',
-    description:
-      'Built an anonymous messaging platform with Next.js, MongoDB, NextAuth, Tailwind CSS, and Shadcn UI for secure send/receive interactions.',
-    tech: ['Next.js', 'Tailwind CSS', 'Shadcn UI', 'PostgreSQL'],
-    image: '/assets/projects/anonymous.png',
-    link: 'https://github.com/rsinghcodes/anonymous-message',
-    live: 'https://pinganonymous.netlify.app/',
-  },
-  {
-    title: 'Portfolio Website',
-    description:
-      'A personal portfolio website built with Next.js, React, and Tailwind CSS, featuring advanced animations and a modern UI.',
-    tech: ['Next.js', 'React', 'Tailwind CSS', 'Framer Motion'],
-    image: '/assets/projects/portfolio.png',
-    link: 'https://github.com/rsinghcodes/portfolio',
-    live: '/',
-  },
-  {
-    title: 'Bulletin Board - Task Management App',
-    description:
-      'A Kanban-style task management app for individuals, with drag-and-drop cards, and user authentication.',
-    tech: ['React', 'MongoDB', 'GraphQL', 'Apollo Server'],
-    image: '/assets/projects/bulletin-board.png',
-    link: 'https://github.com/rsinghcodes/bulletin-board',
-    live: 'https://boardbulletin.netlify.app/',
-  },
-];
+import ProjectMockup from '@/components/ProjectMockup';
+import portfolioData from '@/data/portfolio.json';
 
 export default function Projects() {
+  const { projects } = portfolioData;
+
   return (
     <>
       <ThemeToggle />
@@ -78,14 +24,8 @@ export default function Projects() {
             viewport={{ once: true, amount: 0.2 }}
             whileHover={{ scale: 1.04, rotate: 1 }}
           >
-            <div className="relative w-full h-48 sm:w-48 sm:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
+            <div className="relative w-full h-48 sm:w-56 sm:h-32 rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0 flex-shrink-0">
+              <ProjectMockup title={project.title} tech={project.tech} />
             </div>
             <div className="flex-1 flex flex-col justify-center space-y-2 pl-0 sm:pl-2">
               <h3 className="font-semibold tracking-tight mt-2 sm:mt-0 text-base">

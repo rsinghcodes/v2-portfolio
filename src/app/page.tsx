@@ -10,11 +10,13 @@ import { FiGithub, FiGlobe } from 'react-icons/fi';
 import TiltCard from '@/components/TiltCard';
 import Hero3DObject from '@/components/Hero3DObject';
 import portfolioData from '@/data/portfolio.json';
+import ProjectMockup from '@/components/ProjectMockup';
 
 export default function Home() {
   // Typewriter alternating title state
   const titles = portfolioData.titles;
   const { experience, projects, certifications, skills, personal, sections } = portfolioData;
+  const featuredProjects = projects.filter((project: any) => project.featured);
 
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
@@ -373,20 +375,14 @@ export default function Home() {
           whileInView="show"
           viewport={{ once: true }}
         >
-          {projects.map((project) => (
+          {featuredProjects.map((project) => (
             <motion.div variants={fadeSlide} key={project.title}>
               <TiltCard>
                 <div
                   className="flex flex-col sm:flex-row glass section-border rounded-elegant overflow-hidden group transition-all duration-300 hover:shadow-lg p-3 sm:p-5 h-full w-full"
                 >
-                  <div className="relative w-full h-48 sm:w-48 sm:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
+                  <div className="relative w-full h-48 sm:w-56 sm:h-32 rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0 flex-shrink-0">
+                    <ProjectMockup title={project.title} tech={project.tech} />
                   </div>
                   <div className="flex-1 flex flex-col justify-center space-y-2 pl-0 sm:pl-2">
                     <h3 className="font-semibold tracking-tight mt-2 sm:mt-0 text-base">
