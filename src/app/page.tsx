@@ -5,6 +5,7 @@ import SocialIcons from '@/components/SocialIcons';
 import ThemeToggle from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
 import TiltCard from '@/components/TiltCard';
@@ -287,59 +288,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="certifications"
-        className="relative flex flex-col min-h-0 gap-y-3 glass section-border rounded-elegant p-5 mt-16"
-      >
-        <motion.h2
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="text-3xl font-extrabold mb-4"
-        >
-          {sections.certifications.title}
-        </motion.h2>
-        {certifications.map((cert) => (
-          <motion.a
-            key={cert.href}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="block cursor-pointer group"
-            href={cert.href}
-          >
-            <div className="rounded-lg text-foreground flex">
-              <div className="flex-none">
-                <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto bg-muted-background">
-                  <Image
-                    width={48}
-                    height={48}
-                    src={cert.logo}
-                    alt={cert.alt}
-                    className="aspect-square h-full w-full object-contain shadow-md"
-                  />
-                </span>
-              </div>
-              <div className="flex-grow ml-4 items-center flex-col group">
-                <div className="flex flex-col">
-                  <div className="flex items-center justify-between gap-x-2 text-base">
-                    <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm group-hover:underline">
-                      {cert.title}
-                    </h3>
-                    <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
-                      {cert.date}
-                    </div>
-                  </div>
-                  <div className="font-sans text-xs">{cert.org}</div>
-                </div>
-              </div>
-            </div>
-          </motion.a>
-        ))}
-      </section>
-
       {/* Projects Section */}
       <motion.section
         id="projects"
@@ -445,7 +393,81 @@ export default function Home() {
             </motion.div>
           ))}
         </motion.div>
+
+        <motion.div 
+          variants={fadeSlide}
+          className="flex justify-center mt-10"
+        >
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-card text-foreground hover:bg-muted text-sm font-semibold transition-all shadow-sm hover:shadow-md group/btn"
+          >
+            <span>View All Projects</span>
+            <svg 
+              className="w-4 h-4 text-muted-foreground group-hover/btn:text-foreground group-hover/btn:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              strokeWidth="2.5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
+        </motion.div>
       </motion.section>
+
+      <section
+        id="certifications"
+        className="relative flex flex-col min-h-0 gap-y-3 glass section-border rounded-elegant p-5 mt-16"
+      >
+        <motion.h2
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="text-3xl font-extrabold mb-4"
+        >
+          {sections.certifications.title}
+        </motion.h2>
+        {certifications.map((cert) => (
+          <motion.a
+            key={cert.href}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="block cursor-pointer group"
+            href={cert.href}
+          >
+            <div className="rounded-lg text-foreground flex">
+              <div className="flex-none">
+                <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto bg-muted-background">
+                  <Image
+                    width={48}
+                    height={48}
+                    src={cert.logo}
+                    alt={cert.alt}
+                    className="aspect-square h-full w-full object-contain shadow-md"
+                  />
+                </span>
+              </div>
+              <div className="flex-grow ml-4 items-center flex-col group">
+                <div className="flex flex-col">
+                  <div className="flex items-center justify-between gap-x-2 text-base">
+                    <h3 className="inline-flex items-center justify-center font-semibold leading-none text-xs sm:text-sm group-hover:underline">
+                      {cert.title}
+                    </h3>
+                    <div className="text-xs sm:text-sm tabular-nums text-muted-foreground text-right">
+                      {cert.date}
+                    </div>
+                  </div>
+                  <div className="font-sans text-xs">{cert.org}</div>
+                </div>
+              </div>
+            </div>
+          </motion.a>
+        ))}
+      </section>
 
       {/* Contact Section */}
       <section id="contact" className="relative pt-16 pb-24">

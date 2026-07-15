@@ -27,6 +27,21 @@ interface ProjectMockupProps {
 export default function ProjectMockup({ title, tech }: ProjectMockupProps) {
   const normalizedTitle = title.toLowerCase();
 
+  // NutriAI Mockup
+  if (normalizedTitle.includes('nutriai') || normalizedTitle.includes('nutrition') || normalizedTitle.includes('fitness')) {
+    return <NutriAIMockup />;
+  }
+
+  // ResearchMind Mockup
+  if (normalizedTitle.includes('researchmind') || normalizedTitle.includes('research') || normalizedTitle.includes('agent')) {
+    return <ResearchMindMockup />;
+  }
+
+  // StudySurf Mockup
+  if (normalizedTitle.includes('studysurf') || normalizedTitle.includes('learning') || normalizedTitle.includes('study')) {
+    return <StudySurfMockup />;
+  }
+
   // 1. ReadList - Blog App Mockup
   if (normalizedTitle.includes('readlist')) {
     return <ReadListMockup />;
@@ -679,6 +694,211 @@ function FallbackTerminalMockup({ title, tech }: ProjectMockupProps) {
           <div className="flex items-center gap-1.5">
             <FiCode className="w-2.5 h-2.5" />
             <span>utf-8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ----------------- NUTRI AI NUTRITION & FITNESS MOCKUP -----------------
+function NutriAIMockup() {
+  const [kcal, setKcal] = useState(1450);
+  const [protein, setProtein] = useState(85);
+
+  return (
+    <div className="w-full h-full min-h-[140px] flex items-center justify-center bg-slate-900/90 py-1 select-none overflow-hidden">
+      {/* Phone Frame */}
+      <div className="w-[185px] h-[130px] rounded-t-2xl border-x-4 border-t-4 border-slate-800 bg-slate-950 flex flex-col shadow-2xl relative">
+        {/* Notch */}
+        <div className="absolute top-1 left-1/2 -translate-x-1/2 w-10 h-1.5 rounded-full bg-slate-800 flex items-center justify-center" />
+        
+        {/* Phone screen content */}
+        <div className="flex-1 flex flex-col p-2 pt-3 justify-between font-sans text-white text-[9px]">
+          {/* Header */}
+          <div className="flex justify-between items-center border-b border-slate-800 pb-1 flex-shrink-0">
+            <span className="font-bold text-emerald-400 flex items-center gap-0.5">🍎 NutriAI</span>
+            <span className="text-[7px] text-emerald-300 bg-emerald-500/10 px-1 rounded-full font-semibold">Active</span>
+          </div>
+
+          {/* Body */}
+          <div className="flex-grow flex gap-2 items-center justify-center mt-1">
+            {/* Circle Progress Tracker */}
+            <div className="relative w-14 h-14 rounded-full border-4 border-slate-800 flex flex-col items-center justify-center border-t-emerald-500 border-r-emerald-500">
+              <span className="font-bold text-[10px] text-emerald-400 leading-none">{kcal}</span>
+              <span className="text-[6px] text-slate-500 scale-90">kcal left</span>
+            </div>
+            
+            {/* Stats list */}
+            <div className="flex-1 space-y-1.5 text-[8px]">
+              <div>
+                <div className="flex justify-between text-slate-400">
+                  <span>Protein</span>
+                  <span className="text-white">{protein}g/120g</span>
+                </div>
+                <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden mt-0.5">
+                  <div className="bg-cyan-500 h-full rounded-full w-[70%]" />
+                </div>
+              </div>
+              <div>
+                <div className="flex justify-between text-slate-400">
+                  <span>Carbs</span>
+                  <span className="text-white">165g/250g</span>
+                </div>
+                <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden mt-0.5">
+                  <div className="bg-yellow-500 h-full rounded-full w-[66%]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ----------------- RESEARCH MIND MULTI-AGENT MOCKUP -----------------
+function ResearchMindMockup() {
+  const [activeAgent, setActiveAgent] = useState(0);
+  const agents = ['Planner', 'Searcher', 'Writer', 'Critic'];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveAgent((prev) => (prev + 1) % agents.length);
+    }, 1800);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full h-full min-h-[140px] flex flex-col bg-slate-900/90 text-slate-200 font-sans select-none relative">
+      {/* Browser bar */}
+      <div className="flex items-center justify-between px-3 py-1 bg-slate-950/70 border-b border-slate-800/60 flex-shrink-0">
+        <div className="flex space-x-1">
+          <span className="w-2 h-2 rounded-full bg-red-500/80" />
+          <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
+          <span className="w-2 h-2 rounded-full bg-green-500/80" />
+        </div>
+        <div className="text-[8px] text-slate-500 bg-slate-900/60 px-4 py-0.5 rounded border border-slate-800/40 font-mono scale-90">
+          researchmind.ai/dashboard
+        </div>
+        <div className="w-6" />
+      </div>
+
+      {/* Main panel */}
+      <div className="p-2 flex-grow flex gap-2 overflow-hidden text-[9px]">
+        {/* Left: Agents flow */}
+        <div className="w-[85px] border-r border-slate-800 pr-1.5 flex flex-col justify-between">
+          <span className="text-[7px] text-slate-500 uppercase tracking-wider font-semibold block mb-1">Agents Stream</span>
+          <div className="space-y-1">
+            {agents.map((agent, idx) => (
+              <div 
+                key={agent} 
+                className={`flex items-center gap-1.5 px-1.5 py-0.5 rounded transition-all duration-300 ${
+                  activeAgent === idx 
+                    ? 'bg-violet-600/30 text-violet-300 border border-violet-500/20 scale-[1.03] font-semibold' 
+                    : 'text-slate-500 border border-transparent'
+                }`}
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${
+                  activeAgent === idx ? 'bg-violet-400 animate-ping' : 'bg-slate-700'
+                }`} />
+                {agent}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Output preview */}
+        <div className="flex-grow flex flex-col justify-between pl-1">
+          <div className="space-y-1">
+            <span className="text-[7px] text-emerald-400 font-mono block">● Generating Report...</span>
+            <div className="h-[55px] bg-slate-950/60 border border-slate-800/60 rounded p-1.5 font-mono text-[7px] text-slate-300 overflow-hidden relative">
+              <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-950/80 to-transparent" />
+              {activeAgent === 0 && <div className="text-violet-300">Planner: Structuring draft Outline for topic...</div>}
+              {activeAgent === 1 && <div className="text-cyan-300">Searcher: Querying Tavily for "AI agent frameworks 2026"...</div>}
+              {activeAgent === 2 && <div className="text-white">Writer: Drafting Section 1: Overview of LangGraph & crewAI...</div>}
+              {activeAgent === 3 && <div className="text-yellow-400 font-medium">Critic: Peer-reviewing source citations & grammar check...</div>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ----------------- STUDY SURF MOCKUP -----------------
+function StudySurfMockup() {
+  const [activeTab, setActiveTab] = useState('quiz');
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTab((prev) => (prev === 'summary' ? 'quiz' : 'summary'));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full h-full min-h-[140px] flex flex-col bg-slate-900/90 text-slate-200 font-sans select-none relative">
+      {/* Browser bar */}
+      <div className="flex items-center justify-between px-3 py-1 bg-slate-950/70 border-b border-slate-800/60 flex-shrink-0">
+        <div className="flex space-x-1">
+          <span className="w-2 h-2 rounded-full bg-red-500/80" />
+          <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
+          <span className="w-2 h-2 rounded-full bg-green-500/80" />
+        </div>
+        <div className="text-[8px] text-slate-500 bg-slate-900/60 px-4 py-0.5 rounded border border-slate-800/40 font-mono scale-90">
+          studysurf.dev/learn
+        </div>
+        <div className="w-6" />
+      </div>
+
+      {/* Main Panel */}
+      <div className="p-2 flex-grow flex gap-2 overflow-hidden text-[9px]">
+        {/* Left: Video Player */}
+        <div className="w-[100px] flex flex-col justify-between">
+          <div className="relative w-full h-[65px] bg-black rounded border border-slate-800 overflow-hidden flex items-center justify-center group-hover:border-violet-500/40 transition-colors">
+            {/* Play Button Overlay */}
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <FiPlay className="w-5 h-5 text-white/95 animate-pulse" />
+            </div>
+            {/* Video Progress Bar */}
+            <div className="absolute bottom-1 inset-x-1.5 bg-slate-800 h-1 rounded-full overflow-hidden">
+              <div className="bg-violet-500 h-full rounded-full w-[45%]" />
+            </div>
+          </div>
+          <span className="text-[7px] text-slate-400 font-semibold truncate mt-1">Video: Neural Networks Basics</span>
+        </div>
+
+        {/* Right: AI Tools Column */}
+        <div className="flex-grow flex flex-col pr-1">
+          {/* Tabs */}
+          <div className="flex border-b border-slate-800 pb-1 gap-2 flex-shrink-0">
+            <span className={`font-semibold cursor-pointer pb-0.5 ${activeTab === 'summary' ? 'text-violet-400 border-b border-violet-400' : 'text-slate-500'}`}>
+              Summary
+            </span>
+            <span className={`font-semibold cursor-pointer pb-0.5 ${activeTab === 'quiz' ? 'text-violet-400 border-b border-violet-400' : 'text-slate-500'}`}>
+              Quiz
+            </span>
+          </div>
+
+          {/* Tab Content */}
+          <div className="flex-grow pt-1.5 flex flex-col justify-center">
+            {activeTab === 'summary' ? (
+              <div className="space-y-1">
+                <div className="h-1 bg-slate-800 rounded w-full" />
+                <div className="h-1 bg-slate-800 rounded w-[85%]" />
+                <div className="h-1 bg-slate-800 rounded w-[90%]" />
+                <div className="h-1 bg-slate-800 rounded w-[60%]" />
+              </div>
+            ) : (
+              <div className="space-y-1 text-slate-300">
+                <span className="text-[7px] text-violet-300 font-bold">Q: What is a perceptron?</span>
+                <div className="flex items-center gap-1 bg-slate-950/60 border border-slate-800/80 rounded px-1 py-0.5">
+                  <FiCheckCircle className="w-2.5 h-2.5 text-emerald-400" />
+                  <span className="text-[6.5px]">A single-layer neural network node</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
