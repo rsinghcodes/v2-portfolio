@@ -5,6 +5,7 @@ import SocialIcons from '@/components/SocialIcons';
 import ThemeToggle from '@/components/ThemeToggle';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
 import TiltCard from '@/components/TiltCard';
@@ -391,6 +392,27 @@ export default function Home() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        <motion.div 
+          variants={fadeSlide}
+          className="flex justify-center mt-10"
+        >
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-card text-foreground hover:bg-muted text-sm font-semibold transition-all shadow-sm hover:shadow-md group/btn"
+          >
+            <span>View All Projects</span>
+            <svg 
+              className="w-4 h-4 text-muted-foreground group-hover/btn:text-foreground group-hover/btn:translate-x-1 transition-transform duration-300" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              strokeWidth="2.5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </Link>
         </motion.div>
       </motion.section>
 
