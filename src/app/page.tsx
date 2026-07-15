@@ -8,13 +8,14 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FiGithub, FiGlobe } from 'react-icons/fi';
 import TiltCard from '@/components/TiltCard';
-import Hero3DObject from '@/components/Hero3DObject';
 import portfolioData from '@/data/portfolio.json';
+import ProjectMockup from '@/components/ProjectMockup';
 
 export default function Home() {
   // Typewriter alternating title state
   const titles = portfolioData.titles;
   const { experience, projects, certifications, skills, personal, sections } = portfolioData;
+  const featuredProjects = projects.filter((project: any) => project.featured);
 
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
@@ -79,13 +80,13 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="hero"
-        className="relative glass section-border rounded-elegant p-5 sm:p-8 flex justify-between gap-2"
+        className="relative glass section-border rounded-elegant p-5 sm:p-8 flex justify-start gap-2"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="gap-y-4 flex flex-col items-start justify-center"
+          className="gap-y-4 flex flex-col items-start justify-center w-full"
           whileHover={{ y: -8, rotate: 1 }}
           style={{ willChange: 'transform' }}
         >
@@ -112,15 +113,6 @@ export default function Home() {
             {displayedText}
             <span className="blinking-cursor">|</span>
           </motion.h2>
-        </motion.div>
-        <motion.div
-          className="relative"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, type: 'spring', stiffness: 200 }}
-        >
-          {/* 3D Hero Object */}
-          <Hero3DObject />
         </motion.div>
       </section>
 
@@ -181,20 +173,23 @@ export default function Home() {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-4 max-w-3xl mx-auto mt-8">
           {skills.map((skillGroup) => (
-            <TiltCard key={skillGroup.category} className={skillGroup.colSpan}>
-              <div className="h-full w-full glass section-border rounded-elegant p-6 flex flex-col justify-start hover:shadow-xl transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-4">{skillGroup.category}</h3>
-                <div className="flex flex-wrap gap-3">
-                  {skillGroup.items.map((skill) => (
-                    <span key={skill} className={`px-3 py-1 text-sm rounded-full font-semibold tracking-wide ${skillGroup.bgClass}`}>
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            <div key={skillGroup.category} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 py-3 border-b border-border last:border-b-0">
+              <span className="font-bold text-sm sm:w-44 shrink-0 text-foreground">
+                {skillGroup.category}
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {skillGroup.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className="inline-flex items-center rounded-md border border-border bg-secondary text-secondary-foreground hover:bg-muted px-2 py-0.5 text-xs font-medium transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            </TiltCard>
+            </div>
           ))}
         </div>
       </motion.section>
@@ -216,7 +211,7 @@ export default function Home() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             viewport={{ once: true }}
-            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm font-semibold"
           >
             {sections.experience.subtitle}
           </motion.div>
@@ -233,55 +228,63 @@ export default function Home() {
             {sections.experience.description}
           </p>
         </motion.div>
-        <motion.ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+
+        <div className="max-w-3xl mx-auto space-y-8 mt-12">
           {experience.map((exp, idx) => (
-            <motion.li
+            <motion.div
               key={exp.time + exp.title}
-              className="relative ml-10 py-4"
               variants={fadeSlide}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
+              className="group"
             >
-              <motion.div
-                className="absolute -left-16 top-2 flex items-center justify-center bg-white rounded-full border w-12 h-12 shadow-sm"
-                variants={dotVariants}
-                whileHover="hover"
-              >
-                <span className="relative flex shrink-0 overflow-hidden rounded-full border size-12 m-auto">
-                  <Image
-                    src={exp.logo}
-                    width={48}
-                    height={48}
-                    alt={exp.alt}
-                    className={
-                      exp.logo.includes('magazine3')
-                        ? 'aspect-square h-full w-full object-contain'
-                        : 'aspect-square object-contain'
-                    }
-                  />
-                </span>
-              </motion.div>
-              <div className="flex-1 flex flex-col justify-start gap-1 bg-transparent">
-                <time className="text-xs text-muted-foreground">
-                  {exp.time} • {exp.time_count}
-                </time>
-                <h2 className="font-semibold leading-none">{exp.title}</h2>
-                <span className="prose dark:prose-invert text-sm text-muted-foreground">
-                  {exp.desc}
-                </span>
-                <div className="mt-2 flex flex-row flex-wrap items-start gap-2">
-                  <div
-                    className="items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary text-primary-foreground hover:bg-primary/80 flex gap-2"
-                    title={exp.company}
-                  >
-                    {exp.company}
-                  </div>
+              {/* Header: Company + Verification */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2">
+                  <svg className="w-5 h-5 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.475 0-.928.09-1.348.246C14.773 2.51 13.483 1.5 12 1.5s-2.773 1.01-3.422 2.256a3.842 3.842 0 00-1.348-.246c-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.475 0 .928-.09 1.348-.246.649 1.246 1.939 2.256 3.422 2.256s2.773-1.01 3.422-2.256c.42.156.873.246 1.348.246 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z" fill="#3B82F6"/>
+                    <path d="M9.75 16.25l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z" fill="#FFF"/>
+                  </svg>
+                  <h3 className="text-xl font-bold text-foreground">{exp.company}</h3>
+                </div>
+                <div className="flex justify-between items-center text-sm mt-1 flex-wrap gap-2">
+                  <span className="font-semibold text-muted-foreground">{exp.title}</span>
+                  <span className="text-sm text-muted-foreground">{exp.time}</span>
                 </div>
               </div>
-            </motion.li>
+
+              {/* Body: Logo + Description Bullet Points */}
+              <div className="flex gap-4 sm:gap-6 items-start mt-4">
+                <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-border bg-white flex items-center justify-center shadow-sm">
+                  <Image
+                    src={exp.logo}
+                    width={64}
+                    height={64}
+                    alt={exp.alt}
+                    className="object-contain w-8 h-8 sm:w-12 sm:h-12"
+                  />
+                </div>
+                <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground flex-1">
+                  {Array.isArray(exp.desc) ? (
+                    exp.desc.map((bullet: string, bIdx: number) => (
+                      <li key={bIdx} className="leading-relaxed">
+                        {bullet}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="leading-relaxed">{exp.desc}</li>
+                  )}
+                </ul>
+              </div>
+
+              {/* Divider */}
+              {idx < experience.length - 1 && (
+                <hr className="my-8 border-t border-border" />
+              )}
+            </motion.div>
           ))}
-        </motion.ul>
+        </div>
       </section>
 
       <section
@@ -349,7 +352,7 @@ export default function Home() {
         <motion.div variants={fadeSlide} className="text-center space-y-2">
           <motion.div
             variants={fadeSlide}
-            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm"
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm font-semibold animate-pulse"
           >
             {sections.projects.subtitle}
           </motion.div>
@@ -361,73 +364,84 @@ export default function Home() {
           </motion.h2>
           <motion.p
             variants={fadeSlide}
-            className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+            className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto"
           >
             {sections.projects.description}
           </motion.p>
         </motion.div>
+
         <motion.div
-          className="grid gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto"
           variants={staggerSection}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          {projects.map((project) => (
-            <motion.div variants={fadeSlide} key={project.title}>
-              <TiltCard>
-                <div
-                  className="flex flex-col sm:flex-row glass section-border rounded-elegant overflow-hidden group transition-all duration-300 hover:shadow-lg p-3 sm:p-5 h-full w-full"
-                >
-                  <div className="relative w-full h-48 sm:w-48 sm:h-28 aspect-video rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center space-y-2 pl-0 sm:pl-2">
-                    <h3 className="font-semibold tracking-tight mt-2 sm:mt-0 text-base">
+          {featuredProjects.map((project) => (
+            <motion.div variants={fadeSlide} key={project.title} className="h-full">
+              <div className="rounded-lg bg-card text-card-foreground flex flex-col overflow-hidden border border-border hover:shadow-lg transition-all duration-300 ease-out h-full group">
+                {/* Top Mockup Image */}
+                <div className="relative h-40 w-full overflow-hidden border-b border-border flex-shrink-0">
+                  <ProjectMockup title={project.title} tech={project.tech} />
+                </div>
+
+                {/* Card Content Area */}
+                <div className="flex flex-col flex-1 p-4">
+                  <div className="space-y-1">
+                    <h3 className="font-semibold tracking-tight text-base text-foreground group-hover:text-primary transition-colors">
                       {project.title}
                     </h3>
-                    <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight">
+                    {project.dates && (
+                      <time className="font-sans text-xs text-muted-foreground block">
+                        {project.dates}
+                      </time>
+                    )}
+                    <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight mt-2">
                       <p>{project.description}</p>
                     </div>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                  </div>
+
+                  {/* Tech Tags */}
+                  <div className="mt-auto pt-4 flex flex-col">
+                    <div className="flex flex-wrap gap-1">
                       {project.tech.map((tech) => (
                         <span
                           key={tech}
-                          className="inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 px-2 py-0.5 text-xs font-mono tracking-wide shadow-sm"
+                          className="inline-flex items-center rounded-md border border-border bg-secondary text-secondary-foreground hover:bg-secondary/80 px-1.5 py-0.5 text-[10px] font-semibold transition-colors"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <div className="flex flex-row gap-2">
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
-                      >
-                        <FiGithub className="w-4 h-4" />
-                        Code
-                      </a>
+                  </div>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-row flex-wrap items-center gap-1.5 mt-3 pt-1">
+                    {project.live && (
                       <a
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
+                        className="inline-flex items-center justify-center rounded-md text-[10px] font-semibold transition-colors border border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 h-7 px-2.5 gap-1.5"
                       >
-                        <FiGlobe className="w-4 h-4" />
-                        Live
+                        <FiGlobe className="w-3.5 h-3.5" />
+                        Website
                       </a>
-                    </div>
+                    )}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center rounded-md text-[10px] font-semibold transition-colors border border-border bg-transparent text-foreground hover:bg-muted h-7 px-2.5 gap-1.5"
+                      >
+                        <FiGithub className="w-3.5 h-3.5" />
+                        Source
+                      </a>
+                    )}
                   </div>
                 </div>
-              </TiltCard>
+              </div>
             </motion.div>
           ))}
         </motion.div>

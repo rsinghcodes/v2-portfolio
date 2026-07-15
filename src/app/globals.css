@@ -2,18 +2,18 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #030014;
-  --foreground: #e2e8f0;
-  --muted: #0a0118;
-  --muted-foreground: #8892b0;
-  --border: #1e1b4b;
-  --ring: #7f5af0;
-  --radius: 0.75rem;
-  --accent: #7f5af0;
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
-  --glass-bg: rgba(3, 0, 20, 0.65);
-  --glass-blur: blur(20px);
-  --card-shadow: 0 0 20px 0 rgba(127, 90, 240, 0.15);
+  --background: #111111;
+  --foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --border: #262626;
+  --ring: #d4d4d4;
+  --radius: 0.5rem;
+  --accent: #262626;
+  --accent-gradient: none;
+  --glass-bg: rgba(17, 17, 17, 0.8);
+  --glass-blur: blur(16px);
+  --card-shadow: none;
 }
 
 [data-theme='light'] {
@@ -23,25 +23,25 @@
   --muted-foreground: #64748b;
   --border: #e2e8f0;
   --ring: #3b82f6;
-  --accent: #7f5af0;
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
+  --accent: #f1f5f9;
+  --accent-gradient: none;
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-blur: blur(20px);
   --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='dark'] {
-  --background: #030014;
-  --foreground: #e2e8f0;
-  --muted: #0a0118;
-  --muted-foreground: #8892b0;
-  --border: #1e1b4b;
-  --ring: #7f5af0;
-  --accent: #7f5af0;
-  --accent-gradient: linear-gradient(90deg, #7f5af0 0%, #00f2fe 100%);
-  --glass-bg: rgba(3, 0, 20, 0.65);
-  --glass-blur: blur(20px);
-  --card-shadow: 0 0 20px 0 rgba(127, 90, 240, 0.15);
+  --background: #111111;
+  --foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --border: #262626;
+  --ring: #d4d4d4;
+  --accent: #262626;
+  --accent-gradient: none;
+  --glass-bg: rgba(17, 17, 17, 0.8);
+  --glass-blur: blur(16px);
+  --card-shadow: none;
 }
 
 @theme inline {
@@ -100,13 +100,13 @@ html {
   -webkit-backdrop-filter: var(--glass-blur);
   border-radius: var(--radius);
   box-shadow: var(--card-shadow);
-  border: 1px solid rgba(127, 90, 240, 0.15);
+  border: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
 .glass:hover {
-  border: 1px solid rgba(0, 242, 254, 0.3);
-  box-shadow: 0 0 25px 0 rgba(0, 242, 254, 0.15);
+  border: 1px solid var(--muted-foreground);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
 }
 
 /* Gradient Text Utility */
