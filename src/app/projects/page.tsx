@@ -13,56 +13,77 @@ export default function Projects() {
     <>
       <ThemeToggle />
       <h1 className="text-4xl font-extrabold mb-8 text-center">Projects</h1>
-      <div className="grid gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
         {projects.map((project) => (
           <motion.div
             key={project.title}
-            className="flex flex-col sm:flex-row glass section-border rounded-elegant overflow-hidden group transition-all duration-300 hover:scale-[1.025] hover:shadow-lg p-3 sm:p-5"
+            className="h-full"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, type: 'spring', bounce: 0.18 }}
             viewport={{ once: true, amount: 0.2 }}
-            whileHover={{ scale: 1.04, rotate: 1 }}
           >
-            <div className="relative w-full h-48 sm:w-56 sm:h-32 rounded border border-slate-200/10 transition overflow-hidden mb-3 sm:mb-0 flex-shrink-0">
-              <ProjectMockup title={project.title} tech={project.tech} />
-            </div>
-            <div className="flex-1 flex flex-col justify-center space-y-2 pl-0 sm:pl-2">
-              <h3 className="font-semibold tracking-tight mt-2 sm:mt-0 text-base">
-                {project.title}
-              </h3>
-              <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight">
-                <p>{project.description}</p>
+            <div className="rounded-lg bg-card text-card-foreground flex flex-col overflow-hidden border border-border hover:shadow-lg transition-all duration-300 ease-out h-full group">
+              {/* Top Mockup Image */}
+              <div className="relative h-40 w-full overflow-hidden border-b border-border flex-shrink-0">
+                <ProjectMockup title={project.title} tech={project.tech} />
               </div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center rounded-md border font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 px-2 py-0.5 text-xs font-mono tracking-wide shadow-sm"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex flex-row gap-2">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
-                >
-                  <FiGithub className="w-4 h-4" />
-                  Code
-                </a>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="items-center rounded-md border font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 border-transparent bg-foreground text-background shadow hover:bg-accent hover:shadow-lg flex gap-2 px-2 py-2 sm:py-1 text-xs sm:text-[10px]"
-                >
-                  <FiGlobe className="w-4 h-4" />
-                  Live
-                </a>
+
+              {/* Card Content Area */}
+              <div className="flex flex-col flex-1 p-4">
+                <div className="space-y-1">
+                  <h3 className="font-semibold tracking-tight text-base text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.dates && (
+                    <time className="font-sans text-xs text-muted-foreground block">
+                      {project.dates}
+                    </time>
+                  )}
+                  <div className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert [&>*]:!leading-tight mt-2">
+                    <p>{project.description}</p>
+                  </div>
+                </div>
+
+                {/* Tech Tags */}
+                <div className="mt-auto pt-4 flex flex-col">
+                  <div className="flex flex-wrap gap-1">
+                    {project.tech.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center rounded-md border border-border bg-secondary text-secondary-foreground hover:bg-secondary/80 px-1.5 py-0.5 text-[10px] font-semibold transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-row flex-wrap items-center gap-1.5 mt-3 pt-1">
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-md text-[10px] font-semibold transition-colors border border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80 h-7 px-2.5 gap-1.5"
+                    >
+                      <FiGlobe className="w-3.5 h-3.5" />
+                      Website
+                    </a>
+                  )}
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center rounded-md text-[10px] font-semibold transition-colors border border-border bg-transparent text-foreground hover:bg-muted h-7 px-2.5 gap-1.5"
+                    >
+                      <FiGithub className="w-3.5 h-3.5" />
+                      Source
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
