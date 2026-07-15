@@ -1,31 +1,31 @@
 {
   "metadata": {
-    "title": "Raghvendra Singh - Software Engineer & Full Stack Developer",
-    "description": "Software Engineer with 3+ years of experience specializing in full-stack development, React, Node.js, Python, and modern web technologies. Building innovative B2B SaaS solutions with expertise in TypeScript, Next.js, Python, AI and cloud technologies.",
+    "title": "Raghvendra Singh - AI Engineer & Full Stack Software Engineer",
+    "description": "AI Engineer and Full Stack Software Engineer with 4+ years of experience building AI-native applications, multi-agent systems, RAG pipelines, and scalable SaaS products using React, FastAPI, NestJS, Python, TypeScript, LangGraph, and modern cloud technologies.",
     "keywords": [
-      "Software Engineer",
-      "Python Developer",
-      "AI Developer",
-      "Machine Learning Engineer",
-      "AI Enthusiast",
-      "Full Stack Developer",
-      "React",
-      "Node.js",
+      "AI Engineer",
+      "Full Stack Software Engineer",
+      "Generative AI",
+      "LLM Engineer",
+      "Agentic AI",
+      "Multi-Agent Systems",
+      "LangGraph",
+      "LangChain",
+      "RAG",
+      "FastAPI",
+      "NestJS",
+      "Python",
       "TypeScript",
-      "Next.js",
-      "Frontend Development",
-      "Backend Development",
-      "MongoDB",
-      "GraphQL",
+      "React",
       "React Native",
+      "Node.js",
+      "Kafka",
+      "PostgreSQL",
+      "MongoDB",
       "Docker",
       "AWS",
-      "Django",
-      "FastAPI",
-      "Supabase",
-      "LangChain",
-      "LLM",
-      "PostgreSQL"
+      "GraphQL",
+      "Software Engineer"
     ],
     "authors": [
       {
@@ -54,17 +54,36 @@
     "about": {
       "title": "About",
       "content": [
-        { "text": "I'm passionate about building innovative solutions that positively impact people's lives. I have over " },
-        { "text": "3+ years of experience", "highlight": true },
-        { "text": " in software development, having worked for a startup to " },
-        { "text": "build B2B SaaS products", "highlight": true },
-        { "text": ". I am always eager to learn new things and to push the boundaries of what is possible." }
+        {
+          "text": "I'm an "
+        },
+        {
+          "text": "AI Engineer & Full Stack Software Engineer",
+          "highlight": true
+        },
+        {
+          "text": " passionate about building intelligent products powered by "
+        },
+        {
+          "text": "LLMs, Agentic AI, and modern cloud technologies",
+          "highlight": true
+        },
+        {
+          "text": ". Over "
+        },
+        {
+          "text": "4+ years",
+          "highlight": true
+        },
+        {
+          "text": " I've developed scalable SaaS platforms, AI-powered applications, and production-ready backend systems using React, FastAPI, NestJS, Python, TypeScript, LangGraph, and PostgreSQL. I enjoy exploring emerging AI technologies and transforming research into real-world products."
+        }
       ]
     },
     "skills": {
       "subtitle": "My Expertise",
       "title": "Technical Skills",
-      "description": "Technologies and tools I use to build scalable solutions."
+      "description": "Building AI-native applications, scalable backend systems, and modern full-stack products."
     },
     "experience": {
       "subtitle": "My Work",
@@ -198,11 +217,44 @@
     }
   ],
   "titles": [
-    "Software Engineer",
     "AI Engineer",
-    "Full Stack Developer"
+    "Full Stack Software Engineer",
+    "Generative AI Engineer",
+    "LLM Application Developer",
+    "Backend Engineer"
   ],
   "skills": [
+    {
+      "category": "AI Engineering",
+      "items": [
+        "LangGraph",
+        "LangChain",
+        "RAG",
+        "Multi-Agent Systems",
+        "LLMs",
+        "Prompt Engineering",
+        "Gemini APIs",
+        "OpenAI APIs"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-accent/20 text-accent border border-accent/30 shadow-[0_0_10px_rgba(127,90,240,0.3)]"
+    },
+    {
+      "category": "Backend",
+      "items": [
+        "Python",
+        "FastAPI",
+        "NestJS",
+        "Node.js",
+        "Express",
+        "Django",
+        "GraphQL",
+        "Kafka",
+        "REST APIs"
+      ],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-secondary/20 text-secondary-foreground border border-secondary/30"
+    },
     {
       "category": "Frontend & Mobile",
       "items": [
@@ -210,49 +262,23 @@
         "Next.js",
         "React Native",
         "TypeScript",
-        "Tailwind CSS",
-        "Framer Motion",
-        "Three.js"
+        "Redux",
+        "Tailwind CSS"
       ],
-      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "colSpan": "col-span-1 lg:col-span-1",
       "bgClass": "bg-primary/20 text-primary border border-primary/30"
     },
     {
-      "category": "Backend",
+      "category": "Cloud, Data & DevOps",
       "items": [
-        "Node.js",
-        "Express",
-        "Python",
-        "Django",
-        "GraphQL",
-        "REST APIs"
-      ],
-      "colSpan": "col-span-1 lg:col-span-1",
-      "bgClass": "bg-secondary/20 text-secondary-foreground border border-secondary/30"
-    },
-    {
-      "category": "AI Engineering",
-      "items": [
-        "LangChain",
-        "OpenAI APIs",
-        "TensorFlow",
-        "Vector DBs",
-        "LLMs",
-        "Prompt Eng."
-      ],
-      "colSpan": "col-span-1 lg:col-span-1",
-      "bgClass": "bg-accent/20 text-accent border border-accent/30 shadow-[0_0_10px_rgba(127,90,240,0.3)]"
-    },
-    {
-      "category": "Cloud, DBs & DevOps",
-      "items": [
-        "AWS",
-        "Docker",
-        "MongoDB",
         "PostgreSQL",
-        "Supabase",
-        "CI/CD",
-        "Git"
+        "MongoDB",
+        "MySQL",
+        "Redis",
+        "Docker",
+        "AWS",
+        "Git",
+        "CI/CD"
       ],
       "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
       "bgClass": "bg-foreground/10 text-foreground border border-foreground/20"
@@ -322,17 +348,60 @@
   ],
   "projects": [
     {
+      "title": "NutriAI — AI Nutrition & Fitness Tracker",
+      "description": "An AI-powered nutrition and fitness mobile app using LangGraph-based multi-agent workflows and RAG to generate personalized meal and fitness plans with safety validation.",
+      "tech": [
+        "FastAPI",
+        "React Native",
+        "TypeScript",
+        "PostgreSQL",
+        "LangGraph",
+        "LangChain",
+        "Gemini",
+        "RAG"
+      ],
+      "dates": "2026",
+      "link": "",
+      "live": "",
+      "featured": true
+    },
+    {
+      "title": "ResearchMind — Multi-Agent AI Research System",
+      "description": "A multi-agent AI research platform coordinating planning, retrieval, reasoning, and report generation using LangChain, OpenAI, Tavily Search, and Streamlit.",
+      "tech": [
+        "Python",
+        "LangChain",
+        "OpenAI",
+        "Claude",
+        "Streamlit",
+        "Tavily"
+      ],
+      "dates": "2026",
+      "link": "",
+      "live": "",
+      "featured": true
+    },
+    {
+      "title": "StudySurf — AI Learning Platform",
+      "description": "A 7-agent AI learning platform that converts educational videos into personalized summaries, quizzes, visualizations, and multilingual learning content using Gemini and FastAPI.",
+      "tech": [
+        "FastAPI",
+        "Gemini",
+        "React",
+        "Firestore",
+        "FFmpeg",
+        "ElevenLabs"
+      ],
+      "dates": "2026",
+      "link": "",
+      "live": "",
+      "featured": true
+    },
+    {
       "title": "ReadList - A blog web app",
       "description": "ReadList is a blogging platform where users can share written content and ideas. This app allows readers to read, like, comment, and share on other platforms and social media.",
-      "tech": [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "GraphQL",
-        "Apollo Server"
-      ],
-      "dates": "2023",
-      "image": "/assets/projects/readlist.png",
+      "tech": ["React", "Node.js", "MongoDB", "GraphQL", "Apollo Server"],
+      "dates": "2024",
       "link": "https://github.com/rsinghcodes/readlist",
       "live": "https://readlistapp.netlify.app/",
       "featured": true
@@ -340,43 +409,26 @@
     {
       "title": "Votify - A mobile voting app",
       "description": "A high-performance mobile voting application designed for speed, security, and simplicity. Votify leverages modern web technologies to provide a reliable voting experience.",
-      "tech": [
-        "React Native",
-        "Supabase",
-        "Expo"
-      ],
+      "tech": ["React Native", "Supabase", "Expo"],
       "dates": "2024",
-      "image": "/assets/projects/votify.png",
       "link": "https://github.com/rsinghcodes/votify",
       "live": "https://github.com/rsinghcodes/votify",
-      "featured": true
+      "featured": false
     },
     {
       "title": "InterCup - An interview preparation app",
       "description": "InterCup is an interview preparation app that helps users prepare for interviews by providing a platform to practice and track their progress.",
-      "tech": [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Express"
-      ],
+      "tech": ["React", "Node.js", "MongoDB", "Express"],
       "dates": "2023",
-      "image": "/assets/projects/intercup.png",
       "link": "https://github.com/rsinghcodes/intercup",
       "live": "https://intercup.netlify.app/",
-      "featured": true
+      "featured": false
     },
     {
       "title": "Anonymous Message",
       "description": "Built an anonymous messaging platform with Next.js, MongoDB, NextAuth, Tailwind CSS, and Shadcn UI for secure send/receive interactions.",
-      "tech": [
-        "Next.js",
-        "Tailwind CSS",
-        "Shadcn UI",
-        "PostgreSQL"
-      ],
+      "tech": ["Next.js", "Tailwind CSS", "Shadcn UI", "PostgreSQL"],
       "dates": "2024",
-      "image": "/assets/projects/anonymous.png",
       "link": "https://github.com/rsinghcodes/anonymous-message",
       "live": "https://pinganonymous.netlify.app/",
       "featured": false
@@ -384,14 +436,8 @@
     {
       "title": "Portfolio Website",
       "description": "A personal portfolio website built with Next.js, React, and Tailwind CSS, featuring advanced animations and a modern UI.",
-      "tech": [
-        "Next.js",
-        "React",
-        "Tailwind CSS",
-        "Framer Motion"
-      ],
+      "tech": ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
       "dates": "2024 - Present",
-      "image": "/assets/projects/portfolio.png",
       "link": "https://github.com/rsinghcodes/portfolio",
       "live": "/",
       "featured": false
@@ -399,14 +445,8 @@
     {
       "title": "Bulletin Board - Task Management App",
       "description": "A Kanban-style task management app for individuals, with drag-and-drop cards, and user authentication.",
-      "tech": [
-        "React",
-        "MongoDB",
-        "GraphQL",
-        "Apollo Server"
-      ],
+      "tech": ["React", "MongoDB", "GraphQL", "Apollo Server"],
       "dates": "2023",
-      "image": "/assets/projects/bulletin-board.png",
       "link": "https://github.com/rsinghcodes/bulletin-board",
       "live": "https://boardbulletin.netlify.app/",
       "featured": false
