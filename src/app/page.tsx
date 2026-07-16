@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { FiGithub, FiGlobe } from 'react-icons/fi';
+import { FiGithub, FiGlobe, FiMail } from 'react-icons/fi';
 import TiltCard from '@/components/TiltCard';
 import portfolioData from '@/data/portfolio.json';
 import ProjectMockup from '@/components/ProjectMockup';
@@ -132,14 +132,31 @@ export default function Home() {
           >
             {sections.about.title}
           </motion.h2>
-          <div className="prose max-w-full font-sans text-muted-foreground prose-invert">
-            <p>
-              {sections.about.content.map((segment, i) => (
-                <span key={i} className={segment.highlight ? "text-foreground font-semibold" : ""}>
-                  {segment.text}
-                </span>
-              ))}
-            </p>
+          <div className="space-y-2 font-sans text-muted-foreground mt-4">
+            {(sections.about as any).bullets.map((bullet: string, idx: number) => {
+              const parts = bullet.split(/(\*\*.*?\*\*)/g);
+              return (
+                <motion.div
+                  key={idx}
+                  className="flex items-start gap-3 hover:translate-x-1 transition-transform duration-200"
+                  variants={fadeSlide}
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-violet-500 mt-2.5 flex-shrink-0 select-none" />
+                  <span className="text-base leading-relaxed text-slate-300">
+                    {parts.map((part: string, pIdx: number) => {
+                      if (part.startsWith('**') && part.endsWith('**')) {
+                        return (
+                          <strong key={pIdx} className="text-foreground font-semibold">
+                            {part.slice(2, -2)}
+                          </strong>
+                        );
+                      }
+                      return part;
+                    })}
+                  </span>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </motion.section>
@@ -244,8 +261,8 @@ export default function Home() {
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.475 0-.928.09-1.348.246C14.773 2.51 13.483 1.5 12 1.5s-2.773 1.01-3.422 2.256a3.842 3.842 0 00-1.348-.246c-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.475 0 .928-.09 1.348-.246.649 1.246 1.939 2.256 3.422 2.256s2.773-1.01 3.422-2.256c.42.156.873.246 1.348.246 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z" fill="#3B82F6"/>
-                    <path d="M9.75 16.25l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z" fill="#FFF"/>
+                    <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.475 0-.928.09-1.348.246C14.773 2.51 13.483 1.5 12 1.5s-2.773 1.01-3.422 2.256a3.842 3.842 0 00-1.348-.246c-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.475 0 .928-.09 1.348-.246.649 1.246 1.939 2.256 3.422 2.256s2.773-1.01 3.422-2.256c.42.156.873.246 1.348.246 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z" fill="#3B82F6" />
+                    <path d="M9.75 16.25l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z" fill="#FFF" />
                   </svg>
                   <h3 className="text-xl font-bold text-foreground">{exp.company}</h3>
                 </div>
@@ -394,7 +411,7 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <motion.div 
+        <motion.div
           variants={fadeSlide}
           className="flex justify-center mt-10"
         >
@@ -403,11 +420,11 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-card text-foreground hover:bg-muted text-sm font-semibold transition-all shadow-sm hover:shadow-md group/btn"
           >
             <span>View All Projects</span>
-            <svg 
-              className="w-4 h-4 text-muted-foreground group-hover/btn:text-foreground group-hover/btn:translate-x-1 transition-transform duration-300" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24" 
+            <svg
+              className="w-4 h-4 text-muted-foreground group-hover/btn:text-foreground group-hover/btn:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
               strokeWidth="2.5"
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -508,17 +525,12 @@ export default function Home() {
           </p>
           <motion.a
             href={`mailto:${personal.email}`}
-            className="flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold bg-foreground text-background hover:bg-foreground/90 mb-8 focus:ring-2 focus:ring-foreground focus:ring-offset-2 transition-colors duration-200"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg border border-border bg-card hover:bg-muted text-foreground font-semibold mb-8 transition-colors duration-200 shadow-sm text-sm group"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <Icon3D
-              src="/icons/mail.png"
-              alt="Email"
-              size={20}
-              hoverEffect={false}
-            />
-            {personal.email}
+            <FiMail className="w-4 h-4 text-violet-400 group-hover:text-foreground transition-colors" />
+            <span>Let's Work Together</span>
           </motion.a>
 
           <SocialIcons />
