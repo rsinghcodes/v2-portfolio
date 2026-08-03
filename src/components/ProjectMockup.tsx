@@ -42,6 +42,11 @@ export default function ProjectMockup({ title, tech }: ProjectMockupProps) {
     return <StudySurfMockup />;
   }
 
+  // Tailr Mockup
+  if (normalizedTitle.includes('tailr')) {
+    return <TailrMockup />;
+  }
+
   // 1. ReadList - Blog App Mockup
   if (normalizedTitle.includes('readlist')) {
     return <ReadListMockup />;
@@ -818,6 +823,97 @@ function ResearchMindMockup() {
               {activeAgent === 1 && <div className="text-cyan-300">Searcher: Querying Tavily for "AI agent frameworks 2026"...</div>}
               {activeAgent === 2 && <div className="text-white">Writer: Drafting Section 1: Overview of LangGraph & crewAI...</div>}
               {activeAgent === 3 && <div className="text-yellow-400 font-medium">Critic: Peer-reviewing source citations & grammar check...</div>}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ----------------- TAILR AI RESUME OPTIMIZATION MOCKUP -----------------
+function TailrMockup() {
+  const steps = ['Resume', 'Extract', 'Retrieve', 'Rewrite'];
+  const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="w-full h-full min-h-[140px] flex flex-col bg-slate-900/90 text-slate-200 font-sans select-none relative">
+      {/* Browser bar */}
+      <div className="flex items-center justify-between px-3 py-1 bg-slate-950/70 border-b border-slate-800/60 flex-shrink-0">
+        <div className="flex space-x-1">
+          <span className="w-2 h-2 rounded-full bg-red-500/80" />
+          <span className="w-2 h-2 rounded-full bg-yellow-500/80" />
+          <span className="w-2 h-2 rounded-full bg-green-500/80" />
+        </div>
+        <div className="text-[8px] text-slate-500 bg-slate-900/60 px-4 py-0.5 rounded border border-slate-800/40 font-mono scale-90">
+          tailrresume.netlify.app/optimize
+        </div>
+        <div className="w-6" />
+      </div>
+
+      {/* Main panel */}
+      <div className="p-2 flex-grow flex gap-2 overflow-hidden text-[9px]">
+        {/* Left: RAG pipeline steps */}
+        <div className="w-[92px] border-r border-slate-800 pr-1.5 flex flex-col justify-between">
+          <span className="text-[7px] text-slate-500 uppercase tracking-wider font-semibold block mb-1">
+            RAG Pipeline
+          </span>
+          <div className="space-y-1">
+            {steps.map((step, idx) => (
+              <div
+                key={step}
+                className={`flex items-center gap-1.5 px-1.5 py-0.5 rounded transition-all duration-300 ${
+                  activeStep === idx
+                    ? 'bg-cyan-600/20 text-cyan-300 border border-cyan-500/20 scale-[1.03] font-semibold'
+                    : 'text-slate-500 border border-transparent'
+                }`}
+              >
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    activeStep === idx ? 'bg-cyan-400 animate-ping' : 'bg-slate-700'
+                  }`}
+                />
+                {step}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Streaming optimized output */}
+        <div className="flex-grow flex flex-col justify-between pl-1">
+          <div className="space-y-1">
+            <span className="text-[7px] text-emerald-400 font-mono block">
+              ● Streaming Optimized Resume...
+            </span>
+            <div className="h-[52px] bg-slate-950/60 border border-slate-800/60 rounded p-1.5 font-mono text-[7px] text-slate-300 overflow-hidden relative">
+              <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-slate-950/80 to-transparent" />
+              {activeStep === 0 && <div className="text-cyan-300">Uploaded resume.pdf (PDF, 2 pages)</div>}
+              {activeStep === 1 && <div className="text-cyan-300">LlamaExtract: parsed 5 sections into JSON</div>}
+              {activeStep === 2 && <div className="text-violet-300">Qdrant: 5 section embeddings matched to JD</div>}
+              {activeStep === 3 && <div className="text-white">Gemini 2.5 Flash: rewriting Experience section...</div>}
+            </div>
+          </div>
+
+          {/* Match score */}
+          <div className="border-t border-slate-800/50 pt-1 mt-1">
+            <div className="flex items-center justify-between text-[8px] font-mono">
+              <span className="text-slate-400">JD Match</span>
+              <span className="text-emerald-400 font-bold">92%</span>
+            </div>
+            <div className="w-full bg-slate-800 h-1 rounded-full overflow-hidden mt-0.5">
+              <motion.div
+                className="bg-gradient-to-r from-cyan-500 to-violet-500 h-full rounded-full"
+                initial={{ width: '20%' }}
+                animate={{ width: '92%' }}
+                transition={{ duration: 3, ease: 'easeOut' }}
+              />
             </div>
           </div>
         </div>

@@ -330,6 +330,25 @@
   ],
   "projects": [
     {
+      "title": "Tailr — AI Resume Optimization Platform",
+      "description": "An AI-powered resume optimization platform grounded in real experience. RAG retrieves the most relevant resume sections from Qdrant and a LangGraph multi-agent workflow rewrites them with Gemini 2.5 Flash — never fabricating anything.",
+      "tech": [
+        "FastAPI",
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Qdrant",
+        "Llamaindex",
+        "LangGraph",
+        "Gemini",
+        "RAG"
+      ],
+      "dates": "2026",
+      "link": "https://github.com/rsinghcodes/Tailr",
+      "live": "https://tailrresume.netlify.app/",
+      "featured": true
+    },
+    {
       "title": "NutriAI — AI Nutrition & Fitness Tracker",
       "description": "An AI-powered nutrition and fitness mobile app using LangGraph-based multi-agent workflows and RAG to generate personalized meal and fitness plans with safety validation.",
       "tech": [
