@@ -36,12 +36,16 @@
     "publisher": "Raghvendra Singh",
     "category": "Technology",
     "classification": "Portfolio",
+    "siteUrl": "https://rsingh.codes",
     "openGraph": {
       "type": "website",
       "locale": "en_US",
-      "siteName": "Raghvendra's Portfolio",
+      "siteName": "Raghvendra Singh",
       "url": "https://rsingh.codes",
-      "image": "/thumbnail/image.png"
+      "image": "/thumbnail/image.png",
+      "imageWidth": 1365,
+      "imageHeight": 630,
+      "imageAlt": "Raghvendra Singh - AI Engineer & Full Stack Software Engineer portfolio"
     },
     "twitterHandle": "@raghvendrrsingh"
   },
