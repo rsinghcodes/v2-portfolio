@@ -13,7 +13,7 @@ import { FiGithub, FiGlobe, FiMail } from 'react-icons/fi';
 export default function Home() {
   // Typewriter alternating title state
   const titles = portfolioData.titles;
-  const { experience, projects, certifications, skills, personal, sections } =
+  const { experience, projects, certifications, skills, personal, sections, achievements } =
     portfolioData;
   const featuredProjects = projects.filter((project: any) => project.featured);
 
@@ -254,80 +254,173 @@ export default function Home() {
           </p>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto space-y-8 mt-12">
-          {experience.map((exp, idx) => (
+        <div className="max-w-3xl mx-auto mt-12 relative">
+          {/* Vertical journey line — grows from the start (bottom) upward */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[19px] sm:left-[27px] top-10 bottom-3 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-violet-500/60"
+          />
+
+          <div className="space-y-10">
+            {/* Journey start marker */}
             <motion.div
-              key={exp.time + exp.title}
               variants={fadeSlide}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="group"
+              className="relative pl-10 sm:pl-14"
             >
-              {/* Header: Company + Verification */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="w-5 h-5 text-blue-500 fill-current flex-shrink-0"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.475 0-.928.09-1.348.246C14.773 2.51 13.483 1.5 12 1.5s-2.773 1.01-3.422 2.256a3.842 3.842 0 00-1.348-.246c-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.475 0 .928-.09 1.348-.246.649 1.246 1.939 2.256 3.422 2.256s2.773-1.01 3.422-2.256c.42.156.873.246 1.348.246 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z"
-                      fill="#3B82F6"
-                    />
-                    <path
-                      d="M9.75 16.25l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z"
-                      fill="#FFF"
-                    />
-                  </svg>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {exp.company}
-                  </h3>
-                </div>
-                <div className="flex justify-between items-center text-sm mt-1 flex-wrap gap-2">
-                  <span className="font-semibold text-muted-foreground">
-                    {exp.title}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {exp.time}
-                  </span>
-                </div>
-              </div>
-
-              {/* Body: Logo + Description Bullet Points */}
-              <div className="flex gap-4 sm:gap-6 items-start mt-4">
-                <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-border bg-white flex items-center justify-center shadow-sm">
-                  <Image
-                    src={exp.logo}
-                    width={64}
-                    height={64}
-                    alt={exp.alt}
-                    className="object-contain w-8 h-8 sm:w-12 sm:h-12"
-                  />
-                </div>
-                <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground flex-1">
-                  {Array.isArray(exp.desc) ? (
-                    exp.desc.map((bullet: string, bIdx: number) => (
-                      <li key={bIdx} className="leading-relaxed">
-                        {bullet}
-                      </li>
-                    ))
-                  ) : (
-                    <li className="leading-relaxed">{exp.desc}</li>
-                  )}
-                </ul>
-              </div>
-
-              {/* Divider */}
-              {idx < experience.length - 1 && (
-                <hr className="my-8 border-t border-border" />
-              )}
+              <span className="absolute left-[11px] sm:left-[19px] top-0 select-none text-base">
+                🚀
+              </span>
+              <span className="inline-block text-sm font-semibold text-muted-foreground">
+                The journey continues...
+              </span>
             </motion.div>
-          ))}
+
+            {experience.map((exp) => (
+              <motion.div
+                key={exp.time + exp.title}
+                variants={fadeSlide}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="relative group pl-10 sm:pl-14"
+              >
+                {/* Timeline dot */}
+                <span className="absolute left-[12px] sm:left-[20px] top-2 flex items-center justify-center">
+                  <span className="block w-3.5 h-3.5 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 ring-4 ring-background shadow-md group-hover:scale-110 group-hover:shadow-[0_0_12px_rgba(127,90,240,0.5)] transition-all duration-200" />
+                </span>
+
+                {/* Header: Company + Verification */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5 text-blue-500 fill-current flex-shrink-0"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.475 0-.928.09-1.348.246C14.773 2.51 13.483 1.5 12 1.5s-2.773 1.01-3.422 2.256a3.842 3.842 0 00-1.348-.246c-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.475 0 .928-.09 1.348-.246.649 1.246 1.939 2.256 3.422 2.256s2.773-1.01 3.422-2.256c.42.156.873.246 1.348.246 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6z"
+                        fill="#3B82F6"
+                      />
+                      <path
+                        d="M9.75 16.25l-4-4 1.5-1.5 2.5 2.5 6.5-6.5 1.5 1.5-8 8z"
+                        fill="#FFF"
+                      />
+                    </svg>
+                    <h3 className="text-xl font-bold text-foreground">
+                      {exp.company}
+                    </h3>
+                  </div>
+                  <div className="flex justify-between items-center text-sm mt-1 flex-wrap gap-2">
+                    <span className="font-semibold text-muted-foreground">
+                      {exp.title}
+                    </span>
+                    <span className="text-sm text-muted-foreground">
+                      {exp.time}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Body: Logo + Description Bullet Points */}
+                <div className="flex gap-4 sm:gap-6 items-start mt-4">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-border bg-white flex items-center justify-center shadow-sm">
+                    <Image
+                      src={exp.logo}
+                      width={64}
+                      height={64}
+                      alt={exp.alt}
+                      className="object-contain w-8 h-8 sm:w-12 sm:h-12"
+                    />
+                  </div>
+                  <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground flex-1">
+                    {Array.isArray(exp.desc) ? (
+                      exp.desc.map((bullet: string, bIdx: number) => (
+                        <li key={bIdx} className="leading-relaxed">
+                          {bullet}
+                        </li>
+                      ))
+                    ) : (
+                      <li className="leading-relaxed">{exp.desc}</li>
+                    )}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
+
+      {/* Achievements Section */}
+      <motion.section
+        id="achievements"
+        className="relative space-y-8 pt-16"
+        variants={staggerSection}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+        <motion.div variants={fadeSlide} className="text-center space-y-2">
+          <motion.div
+            variants={fadeSlide}
+            className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm font-semibold"
+          >
+            {sections.achievements.subtitle}
+          </motion.div>
+          <motion.h2
+            variants={fadeSlide}
+            className="text-4xl font-extrabold tracking-tighter sm:text-6xl mb-4"
+          >
+            {sections.achievements.title}
+          </motion.h2>
+          <motion.p
+            variants={fadeSlide}
+            className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed max-w-2xl mx-auto"
+          >
+            {sections.achievements.description}
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto mt-8"
+          variants={staggerSection}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {achievements.map((achievement) => (
+            <motion.div
+              key={achievement.title}
+              variants={fadeSlide}
+              className="group h-full"
+            >
+              <div className="h-full rounded-lg bg-card text-card-foreground border border-border p-5 flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out">
+                <div className="flex items-start gap-4">
+                  {/* Emoji in gradient ring */}
+                  <div className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-violet-500/30 flex items-center justify-center text-3xl select-none">
+                    {achievement.emoji}
+                  </div>
+
+                  {/* Rank badge + title */}
+                  <div className="flex-1 min-w-0">
+                    <span className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500/10 to-violet-500/10 border border-violet-500/30 text-violet-500 dark:text-violet-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5">
+                      {achievement.rank}
+                    </span>
+                    <h3 className="mt-1.5 text-base font-bold text-foreground tracking-tight">
+                      {achievement.title}
+                    </h3>
+                  </div>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                  {achievement.detail}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.section>
 
       {/* Projects Section */}
       <motion.section

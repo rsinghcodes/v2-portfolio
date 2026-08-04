@@ -63,7 +63,6 @@
         "Worked on **4 production-grade SaaS applications** from development to deployment.",
         "Built **10+ personal projects** across AI, full-stack, and cloud technologies.",
         "**2× Hackathon Winner**.",
-        "**Master of Computer Applications (MCA), completed in May 2026**.",
         "Open Source Contributor to **GirlScript Summer of Code (GSSoC)** and **Hacktoberfest 2021**."
       ]
     },
@@ -76,6 +75,11 @@
       "subtitle": "My Work",
       "title": "Experience",
       "description": "Here's a summary of my professional journey and educational background in software development."
+    },
+    "achievements": {
+      "subtitle": "Recognition",
+      "title": "Achievements",
+      "description": "A few milestones and wins that pushed me to think bigger."
     },
     "certifications": {
       "title": "Certifications"
@@ -127,6 +131,14 @@
       "href": "/#experience",
       "aria": "Experience",
       "tooltip": "Experience",
+      "isInternal": true
+    },
+    {
+      "type": "link",
+      "id": "achievements",
+      "href": "/#achievements",
+      "aria": "Achievements",
+      "tooltip": "Achievements",
       "isInternal": true
     },
     {
@@ -216,26 +228,35 @@
         "LangGraph",
         "LangChain",
         "RAG",
+        "Agentic AI",
         "Multi-Agent Systems",
         "LLMs",
+        "Vector Embeddings",
+        "Semantic Search",
+        "MCP",
         "Prompt Engineering",
-        "Gemini APIs",
-        "OpenAI APIs"
+        "Llamaindex"
       ],
       "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
       "bgClass": "bg-accent/20 text-accent border border-accent/30 shadow-[0_0_10px_rgba(127,90,240,0.3)]"
     },
     {
+      "category": "Languages",
+      "items": ["JavaScript (ES6+)", "TypeScript", "Python", "SQL"],
+      "colSpan": "col-span-1 lg:col-span-1",
+      "bgClass": "bg-cyan-500/10 text-cyan-500 border border-cyan-500/30"
+    },
+    {
       "category": "Backend",
       "items": [
-        "Python",
         "FastAPI",
-        "NestJS",
+        "Django REST",
         "Node.js",
+        "NestJS",
         "Express",
-        "Django",
         "GraphQL",
         "Kafka",
+        "RabbitMQ",
         "REST APIs"
       ],
       "colSpan": "col-span-1 lg:col-span-1",
@@ -243,14 +264,7 @@
     },
     {
       "category": "Frontend & Mobile",
-      "items": [
-        "React",
-        "Next.js",
-        "React Native",
-        "TypeScript",
-        "Redux",
-        "Tailwind CSS"
-      ],
+      "items": ["React", "Next.js", "React Native", "Redux", "Tailwind CSS"],
       "colSpan": "col-span-1 lg:col-span-1",
       "bgClass": "bg-primary/20 text-primary border border-primary/30"
     },
@@ -261,13 +275,30 @@
         "MongoDB",
         "MySQL",
         "Redis",
+        "Qdrant",
         "Docker",
+        "Kafka",
+        "RabbitMQ",
         "AWS",
-        "Git",
         "CI/CD"
       ],
       "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
       "bgClass": "bg-foreground/10 text-foreground border border-foreground/20"
+    },
+    {
+      "category": "Developer Tools & Workflow",
+      "items": [
+        "Git",
+        "GitHub Actions",
+        "Cursor",
+        "Claude Code",
+        "Postman",
+        "Jira",
+        "Agile/Scrum",
+        "System Design"
+      ],
+      "colSpan": "col-span-1 md:col-span-2 lg:col-span-2",
+      "bgClass": "bg-emerald-500/10 text-emerald-500 border border-emerald-500/30"
     }
   ],
   "experience": [
@@ -335,7 +366,7 @@
   "projects": [
     {
       "title": "Tailr — AI Resume Optimization Platform",
-      "description": "An AI-powered resume optimization platform grounded in real experience. RAG retrieves the most relevant resume sections from Qdrant and a LangGraph multi-agent workflow rewrites them with Gemini 2.5 Flash — never fabricating anything.",
+      "description": "An AI-powered resume optimization platform grounded in real experience. RAG retrieves the most relevant resume sections from Qdrant and a LangGraph multi-agent workflow rewrites them with Gemini 3.5 Flash — never fabricating anything.",
       "tech": [
         "FastAPI",
         "Next.js",
@@ -409,7 +440,7 @@
       "dates": "2024",
       "link": "https://github.com/rsinghcodes/readlist",
       "live": "https://readlistapp.netlify.app/",
-      "featured": true
+      "featured": false
     },
     {
       "title": "Votify - A mobile voting app",
@@ -459,6 +490,22 @@
   ],
   "certifications": [
     {
+      "href": "https://www.hackerrank.com/certificates/c0987646ac7e",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Rest API (Intermediate)",
+      "date": "Jul 2026",
+      "org": "HackerRank"
+    },
+    {
+      "href": "https://www.hackerrank.com/certificates/aae0e895303a",
+      "logo": "/assets/hackerrank-logo.png",
+      "alt": "HackerRank",
+      "title": "Software Engineer",
+      "date": "Jul 2026",
+      "org": "HackerRank"
+    },
+    {
       "href": "https://www.hackerrank.com/certificates/0377f0ca48fa",
       "logo": "/assets/hackerrank-logo.png",
       "alt": "HackerRank",
@@ -489,6 +536,32 @@
       "title": "Responsive Website Basics: Code with HTML, CSS, and JavaScript",
       "date": "May 2020",
       "org": "Coursera"
+    }
+  ],
+  "achievements": [
+    {
+      "emoji": "🥈",
+      "rank": "2nd Runner-Up",
+      "title": "Hack-O-Gravity",
+      "detail": "Built an AI-powered app in a competitive hackathon using RAG and the GenAI stack, securing 2nd Runner-up."
+    },
+    {
+      "emoji": "🥇",
+      "rank": "Gold Medalist",
+      "title": "Academic Excellence",
+      "detail": "Ranked 1st in consecutive academic years during my B.Tech and earned a Gold Medal for consistency."
+    },
+    {
+      "emoji": "🏆",
+      "rank": "3rd Place",
+      "title": "Code-O-Fiesta",
+      "detail": "Placed 3rd among 200+ participants in a university-level competitive programming contest testing algorithms and problem-solving."
+    },
+    {
+      "emoji": "🚀",
+      "rank": "Top 10",
+      "title": "Purvanchal Ideathon 2025",
+      "detail": "Reached Top 10 among 60 teams at Purvanchal Ideathon 2025 by building a working solution."
     }
   ]
 }

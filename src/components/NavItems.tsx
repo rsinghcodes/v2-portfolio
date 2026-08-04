@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BsFillJournalBookmarkFill } from 'react-icons/bs';
-import { FiGithub, FiHome, FiLinkedin, FiUser, FiTerminal, FiBriefcase, FiFolder, FiMail } from 'react-icons/fi';
+import { FiGithub, FiHome, FiLinkedin, FiUser, FiTerminal, FiBriefcase, FiFolder, FiMail, FiAward } from 'react-icons/fi';
 import { LiaHackerrank } from 'react-icons/lia';
 import { SiLeetcode } from 'react-icons/si';
 import portfolioData from '@/data/portfolio.json';
@@ -15,6 +15,7 @@ const iconMap: Record<string, React.ReactNode> = {
   about: <FiUser className="size-4" />,
   skills: <FiTerminal className="size-4" />,
   experience: <FiBriefcase className="size-4" />,
+  achievements: <FiAward className="size-4" />,
   projects: <FiFolder className="size-4" />,
   contact: <FiMail className="size-4" />,
   blogs: <BsFillJournalBookmarkFill className="size-4" />,
@@ -33,7 +34,7 @@ export default function NavItems() {
     icon: item.id ? iconMap[item.id] : null,
   }));
 
-  const navWidth = isHovered ? 520 : 450;
+  const navWidth = isHovered ? 580 : 500;
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-0 md:top-4 z-30 mx-auto mb-4 flex origin-bottom h-full max-h-14 ">
